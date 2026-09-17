@@ -82,6 +82,14 @@ td strong { color: var(--ink); font-weight: 600; }
 .art-card-small { bottom: 15px; left: 18px; width: 145px; }
 .art-card-small strong { color: #299660; font-size: 22px; }
 .art-icon { align-items: center; background: #ebefff; border-radius: 8px; color: var(--primary); display: flex; font-size: 18px; height: 32px; justify-content: center; margin-bottom: 12px; width: 32px; }
+.stats-grid { display: grid; gap: 18px; grid-template-columns: repeat(4, 1fr); margin-top: 24px; }
+.stat-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; display: grid; grid-template-columns: auto 1fr; padding: 20px; text-decoration: none; transition: .2s; }
+.stat-card:hover { border-color: #b8c4f5; box-shadow: 0 12px 25px rgba(31,45,75,.07); transform: translateY(-3px); }
+.stat-icon { align-items: center; border-radius: 10px; display: flex; font-size: 18px; grid-row: span 2; height: 40px; justify-content: center; margin-right: 13px; width: 40px; }
+.icon-green { background: #eaf8f1; color: #299660; }
+.stat-label { color: var(--muted); font-size: 12px; font-weight: 600; }
+.stat-card strong { color: var(--ink); font-family: 'Plus Jakarta Sans'; font-size: 25px; line-height: 1.25; }
+.stat-link { color: var(--primary); font-size: 11px; font-weight: 700; grid-column: 2; margin-top: 9px; }
 .home-heading { margin-top: 62px; margin-bottom: 22px; }
 .feature-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
 .feature-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 24px; text-decoration: none; transition: .2s; }
@@ -101,7 +109,7 @@ td strong { color: var(--ink); font-weight: 600; }
     .section-heading .button { align-self: stretch; }
     .hero { padding: 36px 26px; }
     .hero-art { display: none; }
-    .feature-grid, .form-grid { grid-template-columns: 1fr; }
+    .stats-grid, .feature-grid, .form-grid { grid-template-columns: 1fr; }
     .form-card { padding: 20px; }
     .form-actions { flex-direction: column-reverse; }
     .form-actions .button { width: 100%; }

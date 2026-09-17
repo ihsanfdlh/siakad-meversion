@@ -2,6 +2,9 @@
 
 use App\Models\Mahasiswa;
 use App\Models\User;
+use App\Models\Dosen;
+use App\Models\Matakuliah;
+use App\Models\Ruang;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
@@ -9,7 +12,14 @@ use App\Http\Controllers\RuangController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $counts = [
+        'mahasiswa' => Mahasiswa::count(),
+        'dosen' => Dosen::count(),
+        'matakuliah' => Matakuliah::count(),
+        'ruang' => Ruang::count(),
+    ];
+
+    return view('welcome', compact('counts'));
 })->name('welcome');
 
 Route::get('/home', function () {

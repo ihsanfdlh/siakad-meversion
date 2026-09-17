@@ -17,6 +17,33 @@
     </div>
 </section>
 
+<section class="stats-grid" aria-label="Ringkasan data akademik">
+    <a class="stat-card" href="{{ route('mahasiswa.index') }}">
+        <span class="stat-icon icon-blue">♙</span>
+        <span class="stat-label">Mahasiswa</span>
+        <strong>{{ number_format($counts['mahasiswa']) }}</strong>
+        <span class="stat-link">Lihat data &rarr;</span>
+    </a>
+    <a class="stat-card" href="{{ route('dosen.index') }}">
+        <span class="stat-icon icon-purple">♧</span>
+        <span class="stat-label">Dosen</span>
+        <strong>{{ number_format($counts['dosen']) }}</strong>
+        <span class="stat-link">Lihat data &rarr;</span>
+    </a>
+    <a class="stat-card" href="{{ route('matakuliah.index') }}">
+        <span class="stat-icon icon-orange">▦</span>
+        <span class="stat-label">Mata Kuliah</span>
+        <strong>{{ number_format($counts['matakuliah']) }}</strong>
+        <span class="stat-link">Lihat data &rarr;</span>
+    </a>
+    <a class="stat-card" href="{{ route('ruang.index') }}">
+        <span class="stat-icon icon-green">⌂</span>
+        <span class="stat-label">Ruangan</span>
+        <strong>{{ number_format($counts['ruang']) }}</strong>
+        <span class="stat-link">Lihat data &rarr;</span>
+    </a>
+</section>
+
 <section class="section-heading home-heading">
     <div><span class="eyebrow">FITUR UTAMA</span><h2>Semua yang Anda butuhkan</h2></div>
 </section>
