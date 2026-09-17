@@ -10,6 +10,16 @@
             <div class="field"><label for="nama_mk">Nama Mata Kuliah</label><input id="nama_mk" type="text" name="nama_mk" value="{{ old('nama_mk') }}" placeholder="Nama mata kuliah" required></div>
             <div class="field"><label for="sks">SKS</label><input id="sks" type="number" name="sks" value="{{ old('sks') }}" min="1" max="6" placeholder="2 - 4" required></div>
             <div class="field"><label for="semester">Semester</label><input id="semester" type="number" name="semester" value="{{ old('semester') }}" min="1" max="14" placeholder="1 - 14" required></div>
+            <select name="dosen_id">
+                <option value="">-- Pilih Dosen --</option>
+
+                @foreach ($dosen as $dsn)
+                    <option value="{{ $dsn->id }}">
+                        {{ $dsn->nama }}
+                    </option>
+                @endforeach
+
+            </select>
         </div>
         <div class="form-actions"><a class="button button-secondary" href="{{ route('matakuliah.index') }}">Batal</a><button class="button button-primary" type="submit">Simpan Mata Kuliah</button></div>
     </form>

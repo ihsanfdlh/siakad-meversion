@@ -24,7 +24,7 @@
                     <td><strong>{{ $matakuliah->nama_mk }}</strong></td>
                     <td>{{ $matakuliah->sks }}</td>
                     <td><span class="status-pill">{{ $matakuliah->semester }}</span></td>
-                    <td>{{ $matakuliah->dosen->name ?? 'Belum ada dosen' }}</td>
+                    <td>{{ $matakuliah->dosen->nama ?? 'Belum ada dosen' }}</td>
                 </tr>
             @empty
                 <tr><td class="empty-state" colspan="6"><strong>Belum ada data mata kuliah</strong><span>Tambahkan mata kuliah pertama untuk mulai mengelola data.</span></td></tr>

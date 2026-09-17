@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use App\Models\Matakuliah;
 use Illuminate\Http\Request;
 
@@ -9,14 +10,17 @@ class MatakuliahController extends Controller
 {
     public function index()
     {
-        $matakuliahs = Matakuliah::all();
+        $matakuliahs = Matakuliah::with('dosen')->get();
 
         return view('matakuliah.index', compact('matakuliahs'));
     }
 
+
     public function create()
     {
-        return view('matakuliah.create');
+        $dosen = Dosen::all();
+
+        return view('matakuliah.create', compact('dosen'));
     }
 
     public function store(Request $request)
@@ -26,6 +30,7 @@ class MatakuliahController extends Controller
             'nama_mk' => 'required',
             'sks' => 'required|integer',
             'semester' => 'required|integer',
+            'dosen_id' => 'required|exists:dosens,id',
         ]);
 
         Matakuliah::create([
@@ -33,9 +38,9 @@ class MatakuliahController extends Controller
             'nama_mk' => $request->nama_mk,
             'sks' => $request->sks,
             'semester' => $request->semester,
+            'dosen_id' => $request->dosen_id,
         ]);
 
-        return redirect()->route('matakuliah.index')
-                         ->with('success', 'Data mata kuliah berhasil ditambahkan.');
+        return redirect()->route('matakuliah.index');
     }
 }
