@@ -26,6 +26,9 @@
 
             <!-- Navigation -->
             <nav class="navigation">
+                <a class="{{ request()->routeIs('welcome') ? 'active' : '' }}" href="{{ route('welcome') }}">
+                    Home
+                </a>
 
                 <a class="{{ request()->routeIs('mahasiswa.*') ? 'active' : '' }}" href="{{ route('mahasiswa.index') }}">
                     Mahasiswa
@@ -37,6 +40,10 @@
 
                 <a class="{{ request()->routeIs('matakuliah.*') ? 'active' : '' }}" href="{{ route('matakuliah.index') }}">
                     Mata Kuliah
+                </a>
+
+                <a class="{{ request()->routeIs('ruang.*') ? 'active' : '' }}" href="{{ route('ruang.index') }}">
+                    Ruangan
                 </a>
 
             </nav>

@@ -5,12 +5,13 @@ use App\Models\User;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
-
+use App\Http\Controllers\RuangController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 Route::get('/home', function () {
     return 'Hai Ini Home';
 });
@@ -46,3 +47,12 @@ Route::get('/dosen/create', [DosenController::class, 'create'])
 
 Route::post('/dosen', [DosenController::class, 'store'])
     ->name('dosen.store');
+
+Route::get('/ruang', [RuangController::class, 'index'])
+    ->name('ruang.index');
+
+Route::get('/ruang/create', [RuangController::class, 'create'])
+    ->name('ruang.create');
+
+Route::post('/ruang', [RuangController::class, 'store'])
+    ->name('ruang.store');
