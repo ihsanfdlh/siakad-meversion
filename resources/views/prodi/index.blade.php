@@ -1,5 +1,5 @@
 @extends('layouts.header')
-@section('title', 'Program Stuudi')
+@section('title', 'Program Studi')
 
 @section('content')
 <div class="section-heading">
@@ -10,10 +10,10 @@
 <div class="table-card">
     <div class="table-top"><strong>Data Program Studi</strong><span class="record-count">{{ $prodis->count() }} data</span></div>
     <div class="table-scroll"><table>
-        <thead><tr><th>No</th><th>Nama</th><th>Jurusan</th><th>Tahun Terbit</th></tr></thead>
+        <thead><tr><th>No</th><th>Nama</th><th>Kepala Program Studi</th><th>Jurusan</th></tr></thead>
         <tbody>
         @forelse ($prodis as $prodi)
-            <tr><td class="muted">{{ $loop->iteration }}</td><td><strong>{{ $prodi->nama }}</strong></td><td>{{ $prodi->jurusan->nama ?? 'Belum ada jurusan' }}</td><td>{{ $prodi->thn_terbit }}</td></tr>
+            <tr><td class="muted">{{ $loop->iteration }}</td><td><strong>{{ $prodi->nama }}</strong></td><td>{{ $prodi->kaprodi->nama ?? 'Belum ada Kaprodi' }}</td><td>{{ $prodi->jurusan->nama ?? 'Belum ada jurusan' }}</td></tr>
         @empty
             <tr><td class="empty-state" colspan="7"><strong>Belum ada data Program Studi</strong><span>Tambahkan Program Studi pertama untuk mulai mengelola data.</span></td></tr>
         @endforelse

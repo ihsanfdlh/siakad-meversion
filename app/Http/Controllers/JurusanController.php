@@ -32,14 +32,12 @@ class JurusanController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'thn_terbit' => 'required',
             'id_kajur' => 'required|exists:dosens,id',
             'id_sekjur' => 'required|exists:dosens,id',
         ]);
 
         Jurusan::create([
             'nama' => $request->nama,
-            'thn_terbit' => $request->thn_terbit,
             'id_kajur' => $request->id_kajur,
             'id_sekjur' => $request->id_sekjur,
         ]);

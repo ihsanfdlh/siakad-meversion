@@ -19,7 +19,7 @@ class Dosen extends Model
     ];
     public function matakuliahs()
     {
-        return $this->hasMany(Matakuliah::class, 'dosen_id');
+        return $this->hasMany(Matakuliah::class, 'dosen_id', 'id_kaprodi');
     }
     public function jurusans()
     {

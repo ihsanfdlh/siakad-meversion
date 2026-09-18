@@ -18,8 +18,6 @@
         <div class="form-grid">
             <div class="field"><label for="nama">Nama Jurusan</label>
                 <input id="nama" type="text" name="nama" value="{{ old('nama') }}" placeholder="Nama Jurusan" required></div>
-            <div class="field"><label for="thn_terbit">Tahun Terbit</label>
-                <input id="tnh_terbit" type="number" name="thn_terbit" value="{{ old('thn_terbit') }}" placeholder="Contoh: 2009" required></div>
             <div class="field">
                 <label for="id_kajur">Dosen</label>
                 <select id="id_kajur" name="id_kajur">

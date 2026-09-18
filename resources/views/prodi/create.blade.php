@@ -18,8 +18,6 @@
         <div class="form-grid">
             <div class="field"><label for="nama">Nama Program Studi</label>
                 <input id="nama" type="text" name="nama" value="{{ old('nama') }}" placeholder="Nama Program Studi" required></div>
-            <div class="field"><label for="thn_terbit">Tahun Terbit</label>
-                <input id="tnh_terbit" type="number" name="thn_terbit" value="{{ old('thn_terbit') }}" placeholder="Contoh: 2009" required></div>
             <div class="field">
                 <label for="id_jurusan">Jurusan</label>
                 <select id="id_jurusan" name="id_jurusan">
@@ -28,6 +26,18 @@
                     @foreach ($jurusan as $jrsn)
                         <option value="{{ $jrsn->id }}">
                             {{ $jrsn->nama }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="field">
+                <label for="id_kaprodi">Jurusan</label>
+                <select id="id_kaprodi" name="id_kaprodi">
+                    <option value="">-- Pilih Kepala Program Studi --</option>
+
+                    @foreach ($kaprodi as $kps)
+                        <option value="{{ $kps->id }}">
+                            {{ $kps->nama }}
                         </option>
                     @endforeach
                 </select>

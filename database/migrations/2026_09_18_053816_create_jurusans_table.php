@@ -9,7 +9,6 @@ public function up(): void
     Schema::create('jurusans', function (Blueprint $table) {
         $table->id();
         $table->string('nama');
-        $table->string('thn_terbit');
 
         $table->foreignId('id_kajur')
                 ->constrained('dosens')

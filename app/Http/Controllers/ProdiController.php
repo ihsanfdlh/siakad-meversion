@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use App\Models\Jurusan;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
@@ -17,8 +18,9 @@ class ProdiController extends Controller
     public function create()
     {
         $jurusan = Jurusan::all();
+        $kaprodi = Dosen::all();
 
-        return view('prodi.create', compact('jurusan'));
+        return view('prodi.create', compact('jurusan', 'kaprodi'));
     }
 
     /**
@@ -28,13 +30,13 @@ class ProdiController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'thn_terbit' => 'required',
+            'id_kaprodi' => 'required|exists:dosens,id',
             'id_jurusan' => 'required|exists:jurusans,id',
         ]);
 
         Prodi::create([
             'nama' => $request->nama,
-            'thn_terbit' => $request->thn_terbit,
+            'id_kaprodi' => $request->id_kaprodi,
             'id_jurusan' => $request->id_jurusan,
         ]);
 

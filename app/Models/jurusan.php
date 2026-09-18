@@ -11,7 +11,6 @@ class Jurusan extends Model
 
     protected $fillable = [
         'nama',
-        'thn_terbit',
         'id_kajur',
         'id_sekjur',
     ];
