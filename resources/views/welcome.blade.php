@@ -30,6 +30,18 @@
         <strong>{{ number_format($counts['dosen']) }}</strong>
         <span class="stat-link">Lihat data &rarr;</span>
     </a>
+    <a class="stat-card" href="{{ route('jurusan.index') }}">
+        <span class="stat-icon icon-blue">⁜</span>
+        <span class="stat-label">Jurusan</span>
+        <strong>{{ number_format($counts['jurusan']) }}</strong>
+        <span class="stat-link">Lihat data &rarr;</span>
+    </a>
+    <a class="stat-card" href="{{ route('prodi.index') }}">
+        <span class="stat-icon icon-green">◫</span>
+        <span class="stat-label">Profram Studi</span>
+        <strong>{{ number_format($counts['prodi']) }}</strong>
+        <span class="stat-link">Lihat data &rarr;</span>
+    </a>
     <a class="stat-card" href="{{ route('matakuliah.index') }}">
         <span class="stat-icon icon-orange">▦</span>
         <span class="stat-label">Mata Kuliah</span>
@@ -50,6 +62,9 @@
 <div class="feature-grid">
     <a class="feature-card" href="{{ route('mahasiswa.index') }}"><span class="feature-icon icon-blue">♙</span><h3>Mahasiswa</h3><p>Kelola identitas dan informasi akademik mahasiswa.</p><span class="feature-link">Kelola data &rarr;</span></a>
     <a class="feature-card" href="{{ route('dosen.index') }}"><span class="feature-icon icon-purple">♧</span><h3>Dosen</h3><p>Perbarui data dosen dan informasi kontak dengan mudah.</p><span class="feature-link">Kelola data &rarr;</span></a>
-    <a class="feature-card" href="{{ route('matakuliah.index') }}"><span class="feature-icon icon-orange">▦</span><h3>Mata Kuliah</h3><p>Atur daftar mata kuliah, SKS, dan semester perkuliahan.</p><span class="feature-link">Kelola data &rarr;</span></a>
+    <a class="feature-card" href="{{ route('jurusan.index') }}"><span class="feature-icon icon-orange">▦</span><h3>Jurusan</h3><p>Atur daftar jurusan, kepala jurusan dan sekretris jurusan.</p><span class="feature-link">Kelola data &rarr;</span></a>
+    <a class="feature-card" href="{{ route('prodi.index') }}"><span class="feature-icon icon-blue">♙</span><h3>Program Studi</h3><p>Kelola program studi.</p><span class="feature-link">Kelola data &rarr;</span></a>
+    <a class="feature-card" href="{{ route('matakuliah.index') }}"><span class="feature-icon icon-purple">♧</span><h3>Mata Kuliah</h3><p>Atur daftar mata kuliah, SKS, dan semester perkuliahan.</p><span class="feature-link">Kelola data &rarr;</span></a>
+    <a class="feature-card" href="{{ route('ruang.index') }}"><span class="feature-icon icon-orange">▦</span><h3>Ruangan Belajar</h3><p>Atur daftar ruang belajar, lokasi gedung, lantai dan kapasitas.</p><span class="feature-link">Kelola data &rarr;</span></a>
 </div>
 @endsection

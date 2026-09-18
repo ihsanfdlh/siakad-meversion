@@ -8,6 +8,7 @@ public function up(): void
 {
     Schema::create('dosens', function (Blueprint $table) {
         $table->id();
+        $table->string('nip', 18)->unique();
         $table->string('nama');
         $table->string('no_telp');
         $table->string('email');

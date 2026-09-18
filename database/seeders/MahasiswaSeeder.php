@@ -12,6 +12,6 @@ class MahasiswaSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Mahasiswa::factory()->count(100)->create();
+        \App\Models\Mahasiswa::factory()->count(250)->create();
     }
 }

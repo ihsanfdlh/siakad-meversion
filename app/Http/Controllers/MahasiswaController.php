@@ -33,8 +33,8 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required',
             'nama' => 'required',
+            'no_telp' => 'required',
             'email' => 'required',
-            'jurusan' => 'required',
             'prodi' => 'required',
             'semester' => 'required|integer',
         ]);
@@ -42,8 +42,8 @@ class MahasiswaController extends Controller
         Mahasiswa::create([
             'nim' => $request->nim,
             'nama' => $request->nama,
+            'no_telp' => $request->no_telp,
             'email' => $request->email,
-            'jurusan' => $request->jurusan,
             'prodi' => $request->prodi,
             'semester' => $request->semester,
         ]);

@@ -31,12 +31,14 @@ class DosenController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nip' => 'required',
             'nama' => 'required',
             'no_telp' => 'required',
             'email' => 'required',
         ]);
 
         Dosen::create([
+            'nip' => $request->nip,
             'nama' => $request->nama,
             'no_telp' => $request->no_telp,
             'email' => $request->email,

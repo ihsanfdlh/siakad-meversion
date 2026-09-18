@@ -9,8 +9,9 @@ class DosenFactory extends Factory
     public function definition(): array
     {
         return [
-            'nama' => $this->faker->name(),
-            'no_telp' => $this->faker->unique()->phoneNumber(),
+            'nip' => $this->faker->unique()->numerify('##################'),
+            'nama' => fake('id_ID')->name(),
+            'no_telp' => '08' . $this->faker->unique()->numerify('##########'),
             'email' => $this->faker->unique()->safeEmail(),
         ];
     }
