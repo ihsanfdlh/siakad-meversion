@@ -8,8 +8,8 @@
         <div class="form-grid">
             <div class="field"><label for="nim">NIM</label><input id="nim" type="text" name="nim" value="{{ old('nim') }}" placeholder="Contoh: 2301001" required></div>
             <div class="field"><label for="nama">Nama Mahasiswa</label><input id="nama" type="text" name="nama" value="{{ old('nama') }}" placeholder="Nama lengkap" required></div>
-            <div class="field"><label for="email">Email</label><input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="nama@kampus.ac.id" required></div>
-            <div class="field"><label for="jurusan">Jurusan</label><input id="jurusan" type="text" name="jurusan" value="{{ old('jurusan') }}" placeholder="Contoh: Informatika" required></div>
+            <div class="field"><label for="no_telp">No Telepone</label><input id="no_telp" type="text" name="no_telp" value="{{ old('no_telp') }}" placeholder="Contoh: 08123456-7890" required></div>
+            <div class="field"><label for="email">Email</label><input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="xyzbcaa@gmail.com" required></div>
             <div class="field"><label for="prodi">Program Studi</label><input id="prodi" type="text" name="prodi" value="{{ old('prodi') }}" placeholder="Contoh: Teknik Informatika" required></div>
             <div class="field"><label for="semester">Semester</label><input id="semester" type="number" name="semester" value="{{ old('semester') }}" min="1" max="14" placeholder="1 - 14" required></div>
         </div>

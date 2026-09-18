@@ -10,8 +10,8 @@ public function up(): void
         $table->id();
         $table->string('nim', 20)->unique();
         $table->string('nama');
+        $table->string('no_telp');
         $table->string('email');
-        $table->string('jurusan');
         $table->string('prodi');
         $table->enum('semester', ['1','2','3','4','5','6','7','8']);
         $table->timestamps();

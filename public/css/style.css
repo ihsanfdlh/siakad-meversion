@@ -64,9 +64,9 @@ td strong { color: var(--ink); font-weight: 600; }
 .form-card { margin: 0 auto; max-width: 760px; padding: 28px; }
 .form-grid { display: grid; gap: 21px 18px; grid-template-columns: repeat(2, 1fr); }
 .field label { color: #48546a; display: block; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
-.field input { background: #fcfdff; border: 1px solid #dfe4ed; border-radius: 8px; color: var(--ink); font: inherit; font-size: 13px; outline: none; padding: 12px 13px; transition: .2s; width: 100%; }
+.field input, .field select { background: #fcfdff; border: 1px solid #dfe4ed; border-radius: 8px; color: var(--ink); font: inherit; font-size: 13px; outline: none; padding: 12px 13px; transition: .2s; width: 100%; }
 .field input::placeholder { color: #b1b8c6; }
-.field input:focus { background: #fff; border-color: #6b83e7; box-shadow: 0 0 0 3px rgba(57,88,216,.1); }
+.field input:focus, .field select:focus { background: #fff; border-color: #6b83e7; box-shadow: 0 0 0 3px rgba(57,88,216,.1); }
 .form-actions { border-top: 1px solid var(--line); display: flex; gap: 10px; justify-content: flex-end; margin-top: 29px; padding-top: 22px; }
 .hero { align-items: center; background: linear-gradient(115deg, #edf1ff, #f8f9ff 65%); border-radius: 22px; display: flex; justify-content: space-between; min-height: 365px; overflow: hidden; padding: 54px 70px; position: relative; }
 .hero-copy { max-width: 545px; position: relative; z-index: 1; }

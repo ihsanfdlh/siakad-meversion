@@ -1,3 +1,21 @@
+NAMA    : IHSAN FADHILAH
+NIM     : C030325125
+KELAS   : TI 3E-AXIOO
+MATKUL  : DESAIN WEB        
+
+Deskripsi Tugas :
+    membuat sebuah wmini project aplikasi Sistem Informasi Akademik menggunakan Laravel.
+Disini saya menambahkan 4 tabel yaitu tabel Mahasiswa, Dosen, Mata Kuliah dan Ruangan.
+Tabel Dosen dan Mata Kuliah berelasi dengan id_dosen yang menjadi Foreign Key pada tabel Mata Kuliah.
+
+Cara menjalankan Project :
+- php artisan server    : untuk menjalankan server laravel
+- php artisan migrate   : untuk menjalankan migrasi dari laravel ke dalam database
+- php artisan db:seed   : untuk menambahkan datai dummy untuk Mahasiswa dan Dosen.
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
