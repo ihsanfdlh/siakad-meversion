@@ -6,6 +6,7 @@
 <form class="form-card" action="{{ route('dosen.store') }}" method="POST">
         @csrf
         <div class="form-grid">
+            <div class="field"><label for="nip">NIP</label><input id="nip" type="text" name="nip" value="{{ old('nip') }}" placeholder="NIP" required></div>
             <div class="field"><label for="nama">Nama Dosen</label><input id="nama" type="text" name="nama" value="{{ old('nama') }}" placeholder="Nama lengkap" required></div>
             <div class="field"><label for="no_telp">Nomor Telepon</label><input id="no_telp" type="text" name="no_telp" value="{{ old('no_telp') }}" placeholder="08xxxxxxxxxx" required></div>
             <div class="field"><label for="email">Email</label><input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="nama@kampus.ac.id" required></div>

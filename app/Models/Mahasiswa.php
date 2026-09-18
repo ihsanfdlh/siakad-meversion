@@ -14,7 +14,11 @@ class Mahasiswa extends Model
         'nama',
         'no_telp',
         'email',
-        'prodi',
+        'id_prodi',
         'semester',
     ];
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class, 'id_prodi');
+    }
 }

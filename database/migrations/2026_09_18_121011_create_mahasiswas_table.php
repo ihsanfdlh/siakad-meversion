@@ -8,12 +8,16 @@ public function up(): void
 {
     Schema::create('mahasiswas', function (Blueprint $table) {
         $table->id();
-        $table->string('nim', 20)->unique();
+        $table->string('nim');
         $table->string('nama');
         $table->string('no_telp');
         $table->string('email');
-        $table->string('prodi');
-        $table->enum('semester', ['1','2','3','4','5','6','7','8']);
+
+        $table->foreignId('id_prodi')
+                ->constrained('prodis')
+                ->onDelete('cascade');
+
+        $table->string('semester');
         $table->timestamps();
     });
 }

@@ -10,7 +10,18 @@
             <div class="field"><label for="nama">Nama Mahasiswa</label><input id="nama" type="text" name="nama" value="{{ old('nama') }}" placeholder="Nama lengkap" required></div>
             <div class="field"><label for="no_telp">No Telepone</label><input id="no_telp" type="text" name="no_telp" value="{{ old('no_telp') }}" placeholder="Contoh: 08123456-7890" required></div>
             <div class="field"><label for="email">Email</label><input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="xyzbcaa@gmail.com" required></div>
-            <div class="field"><label for="prodi">Program Studi</label><input id="prodi" type="text" name="prodi" value="{{ old('prodi') }}" placeholder="Contoh: Teknik Informatika" required></div>
+            <div class="field">
+                <label for="id_prodi">Program Studi</label>
+                <select id="id_prodi" name="id_prodi">
+                    <option value="">-- Pilih Program Studi --</option>
+
+                    @foreach ($prodi as $prodi)
+                        <option value="{{ $prodi->id }}">
+                            {{ $prodi->nama }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
             <div class="field"><label for="semester">Semester</label><input id="semester" type="number" name="semester" value="{{ old('semester') }}" min="1" max="14" placeholder="1 - 14" required></div>
         </div>
         <div class="form-actions"><a class="button button-secondary" href="{{ route('mahasiswa.index') }}">Batal</a><button class="button button-primary" type="submit">Simpan Mahasiswa</button></div>
