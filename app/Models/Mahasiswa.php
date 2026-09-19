@@ -12,10 +12,16 @@ class Mahasiswa extends Model
     protected $fillable = [
         'nim',
         'nama',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'agama',
+        'alamat',
         'no_telp',
         'email',
-        'id_prodi',
+        'angkatan',
         'semester',
+        'id_prodi',
     ];
     public function prodi()
     {

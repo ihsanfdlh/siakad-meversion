@@ -20,6 +20,10 @@ return new class extends Migration
                 ->constrained('dosens')
                 ->onDelete('cascade');
 
+            $table->foreignId('id_prodi')
+                ->constrained('prodis')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

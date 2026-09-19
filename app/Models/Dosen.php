@@ -14,8 +14,14 @@ class Dosen extends Model
     protected $fillable = [
         'nip',
         'nama',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'agama',
+        'alamat',
         'no_telp',
         'email',
+        'pendidikan_terakhir',
     ];
     public function matakuliahs()
     {

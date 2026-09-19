@@ -15,9 +15,22 @@
                 <select id="dosen_id" name="dosen_id">
                     <option value="">-- Pilih Dosen --</option>
 
-                    @foreach ($dosen as $dsn)
+                    @foreach ($pengampu as $dsn)
                         <option value="{{ $dsn->id }}">
                             {{ $dsn->nama }}
+                        </option>
+                    @endforeach
+
+                </select>
+            </div>
+            <div class="field">
+                <label for="id_prodi">Prodi</label>
+                <select id="id_prodi" name="id_prodi">
+                    <option value="">-- Pilih Prodi --</option>
+
+                    @foreach ($perodi as $prodi)
+                        <option value="{{ $prodi->id }}">
+                            {{ $prodi->nama }}
                         </option>
                     @endforeach
 

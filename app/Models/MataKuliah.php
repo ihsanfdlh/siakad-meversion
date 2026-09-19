@@ -16,9 +16,14 @@ class Matakuliah extends Model
         'sks',
         'semester',
         'dosen_id',
+        'id_prodi',
     ];
     public function dosen()
     {
         return $this->belongsTo(Dosen::class, 'dosen_id');
+    }
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class, 'id_prodi');
     }
 }

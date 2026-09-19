@@ -36,19 +36,31 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required',
             'nama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
             'no_telp' => 'required',
             'email' => 'required',
-            'id_prodi' => 'required|exists:prodis,id',
+            'angkatan' => 'required|integer',
             'semester' => 'required|integer',
+            'id_prodi' => 'required|exists:prodis,id',
         ]);
 
         Mahasiswa::create([
             'nim' => $request->nim,
             'nama' => $request->nama,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
             'no_telp' => $request->no_telp,
             'email' => $request->email,
-            'id_prodi' => $request->id_prodi,
+            'angkatan' => $request->angkatan,
             'semester' => $request->semester,
+            'id_prodi' => $request->id_prodi,
         ]);
 
         return redirect()->route('mahasiswa.index')
