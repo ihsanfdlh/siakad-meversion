@@ -30,12 +30,14 @@ class ProdiController extends Controller
     {
         $request->validate([
             'nama' => 'required',
+            'jenjang' => 'required',
             'id_kaprodi' => 'required|exists:dosens,id',
             'id_jurusan' => 'required|exists:jurusans,id',
         ]);
 
         Prodi::create([
             'nama' => $request->nama,
+            'jenjang' => $request->jenjang,
             'id_kaprodi' => $request->id_kaprodi,
             'id_jurusan' => $request->id_jurusan,
         ]);

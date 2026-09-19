@@ -12,6 +12,7 @@ class Prodi extends Model
 
     protected $fillable = [
         'nama',
+        'jenjang',
         'id_kaprodi',
         'id_jurusan',
     ];

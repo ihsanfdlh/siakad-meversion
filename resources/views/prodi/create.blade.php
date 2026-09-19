@@ -19,6 +19,14 @@
             <div class="field"><label for="nama">Nama Program Studi</label>
                 <input id="nama" type="text" name="nama" value="{{ old('nama') }}" placeholder="Nama Program Studi" required></div>
             <div class="field">
+                <label for="jenjang">Jenjang</label>
+                <select id="jenjang" name="jenjang">
+                    <option value="">-- Pilih Jenjang --</option>
+                        <option value="D3">Diploma 3</option>
+                        <option value="D4">Diploma 4</option>
+                </select>
+            </div>
+            <div class="field">
                 <label for="id_jurusan">Jurusan</label>
                 <select id="id_jurusan" name="id_jurusan">
                     <option value="">-- Pilih Jurusan --</option>
@@ -31,7 +39,7 @@
                 </select>
             </div>
             <div class="field">
-                <label for="id_kaprodi">Jurusan</label>
+                <label for="id_kaprodi">Kepala Program Studi</label>
                 <select id="id_kaprodi" name="id_kaprodi">
                     <option value="">-- Pilih Kepala Program Studi --</option>
 

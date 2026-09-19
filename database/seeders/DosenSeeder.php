@@ -12,6 +12,6 @@ class DosenSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Dosen::factory()->count(50)->create();
+        \App\Models\Dosen::factory()->count(40)->create();
     }
 }
