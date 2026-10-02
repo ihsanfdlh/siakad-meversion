@@ -4,6 +4,7 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
+use App\Http\Controllers\MatapelajaranController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\SiswaController;
@@ -111,17 +112,27 @@ Route::get('/tentang', function () {
     return 'Ini adalah project laravel saya yang saya buat untuk memenuhi tugas mata kuliah Desain Web!';
 });
 
-Route::get('/siswa', [SiswaController::class, 'index'])
-    ->name('siswa.index');
-
-Route::get('/siswa/{nis}', [SiswaController::class, 'show'])
-    ->where('nis', '[0-9]+')
-    ->name('siswa.show');
-
+//langkah kerja 2.5
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return 'Dashboard Admin';
     })->name('dashboard');
+});
+
+//tugas mandiri 2.2
+Route::prefix('akademik')->name('akademik.')->group(function () {
+    Route::get('/siswa', [SiswaController::class, 'index'])
+    ->name('siswa.index');
+
+    Route::get('/siswa/{nis}', [SiswaController::class, 'show'])
+    ->where('nis', '[0-9]+')
+    ->name('siswa.show');
+
+    Route::get('/mapel', [MatapelajaranController::class, 'index'])->name('mapel.index');
+
+    Route::get('/mapel/{kode}', [MatapelajaranController::class, 'show'])
+    ->where('kode', '[0-9]+')
+    ->name('mapel.show');
 });
 
 // Route::get('/mahasiswa/{nim}', function ($nim) {
