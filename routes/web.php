@@ -143,6 +143,18 @@ Route::get('/sapa', function () {
     return view('sapa', ['nama' => 'Ihsan Fadhilah']);
 });
 
+//tugas mandiri 4.1
+Route::get('/profil', function () {
+    return view('profil')
+        ->with('nama', 'Ihsan Fadhilah')
+        ->with('nim', 'C030325125')
+        ->with('prodi', 'D3 Teknik Informatika');
+});
+
+//tugas mandiri 4.2
+Route::get('/statistik', function () {
+    return view('akademik.statistik');
+});
 // Route::get('/mahasiswa/{nim}', function ($nim) {
 //     return "Detail mahasiswa dengan NIM: {$nim}";
 // });
