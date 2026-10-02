@@ -6,6 +6,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\RuangController;
+use App\Http\Controllers\SiswaController;
 use App\Models\Dosen;
 use App\Models\Jurusan;
 use App\Models\Mahasiswa;
@@ -110,6 +111,18 @@ Route::get('/tentang', function () {
     return 'Ini adalah project laravel saya yang saya buat untuk memenuhi tugas mata kuliah Desain Web!';
 });
 
+Route::get('/siswa', [SiswaController::class, 'index'])
+    ->name('siswa.index');
+
+Route::get('/siswa/{nis}', [SiswaController::class, 'show'])
+    ->where('nis', '[0-9]+')
+    ->name('siswa.show');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+        return 'Dashboard Admin';
+    })->name('dashboard');
+});
 
 // Route::get('/mahasiswa/{nim}', function ($nim) {
 //     return "Detail mahasiswa dengan NIM: {$nim}";
