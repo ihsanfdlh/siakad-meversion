@@ -127,13 +127,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 //tugas mandiri 2.2
 Route::prefix('akademik')->name('akademik.')->group(function () {
-    Route::get('/siswa', [SiswaController::class, 'index'])
-    ->name('siswa.index');
-
-    Route::get('/siswa/{nis}', [SiswaController::class, 'show'])
-    ->where('nis', '[0-9]+')
-    ->name('siswa.show');
-
+    Route::resource('/siswa', SiswaController::class,);
+    
     Route::get('/mapel', [MatapelajaranController::class, 'index'])->name('mapel.index');
 
     Route::get('/mapel/{kode}', [MatapelajaranController::class, 'show'])
