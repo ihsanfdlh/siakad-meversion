@@ -138,6 +138,11 @@ Route::fallback(function () {
     return 'Halaman yang Anda cari tidak ditemukan.';
 });
 
+//langkah kerja 4.2
+Route::get('/sapa', function () {
+    return view('sapa', ['nama' => 'Ihsan Fadhilah']);
+});
+
 // Route::get('/mahasiswa/{nim}', function ($nim) {
 //     return "Detail mahasiswa dengan NIM: {$nim}";
 // });
