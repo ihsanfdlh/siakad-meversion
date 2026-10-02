@@ -29,7 +29,7 @@
                     <td>{{ $matakuliah->prodi->nama ?? 'Belum ada prodi' }}</td>
                 </tr>
             @empty
-                <tr><td class="empty-state" colspan="6"><strong>Belum ada data mata kuliah</strong><span>Tambahkan mata kuliah pertama untuk mulai mengelola data.</span></td></tr>
+                <tr><td class="empty-state" colspan="7"><strong>Belum ada data mata kuliah</strong><span>Tambahkan mata kuliah pertama untuk mulai mengelola data.</span></td></tr>
             @endforelse
         </tbody>
     </table></div></div>

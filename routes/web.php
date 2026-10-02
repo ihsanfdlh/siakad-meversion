@@ -93,3 +93,32 @@ Route::get('/jurusan/create', [JurusanController::class, 'create'])
 
 Route::post('/jurusan', [JurusanController::class, 'store'])
     ->name('jurusan.store');
+
+//langkah kerja 1.2
+Route::get('/halo', function () {
+    return 'Halo, ini adalah route pertama saya!';
+});
+
+//tugas mandiri 1.1
+Route::get('/profil', function () {
+    return 'Halo, Nama saya adalah Ihsan Fadhilah, saya sedang kuliah pada Politeknik Neger Banjarmasin pada Semester 3!';
+});
+Route::get('/kontak', function () {
+    return 'Hubungi saya dengan email ihsan992277@gmail.com';
+});
+Route::get('/tentang', function () {
+    return 'Ini adalah project laravel saya yang saya buat untuk memenuhi tugas mata kuliah Desain Web!';
+});
+
+
+// Route::get('/mahasiswa/{nim}', function ($nim) {
+//     return "Detail mahasiswa dengan NIM: {$nim}";
+// });
+
+// Route::get('/artikel/{slug?}', function ($slug = 'default') {
+//     return "Slug artikel: {$slug}";
+// });
+
+// Route::get('/mahasiswa/{nim}', function ($nim) {
+//     return "NIM: {$nim}";
+// })->where('nim', '[0-9]+'); // hanya menerima angka
