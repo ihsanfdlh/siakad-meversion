@@ -51,14 +51,16 @@ Route::get('/mahasiswa/{mahasiswa}', function (Mahasiswa $mahasiswa) {
 //     ->name('mahasiswa.store');
 
 //data mata kuliah
-Route::get('/matakuliah', [MatakuliahController::class, 'index'])
-    ->name('matakuliah.index');
+Route::resource('/matakuliah', MatakuliahController::class);
 
-Route::get('/matakuliah/create', [MatakuliahController::class, 'create'])
-    ->name('matakuliah.create');
+// Route::get('/matakuliah', [MatakuliahController::class, 'index'])
+//     ->name('matakuliah.index');
 
-Route::post('/matakuliah', [MatakuliahController::class, 'store'])
-    ->name('matakuliah.store');
+// Route::get('/matakuliah/create', [MatakuliahController::class, 'create'])
+//     ->name('matakuliah.create');
+
+// Route::post('/matakuliah', [MatakuliahController::class, 'store'])
+//     ->name('matakuliah.store');
 
 
 //data dosen
@@ -127,13 +129,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 //tugas mandiri 2.2
 Route::prefix('akademik')->name('akademik.')->group(function () {
-    Route::resource('/siswa', SiswaController::class,);
-    
-    Route::get('/mapel', [MatapelajaranController::class, 'index'])->name('mapel.index');
+    Route::resource('/siswa', SiswaController::class);
 
-    Route::get('/mapel/{kode}', [MatapelajaranController::class, 'show'])
-    ->where('kode', '[0-9]+')
-    ->name('mapel.show');
+    Route::resource('/mapel', MatapelajaranController::class)->only(['index','show,', 'create', 'store']);
 });
 
 Route::fallback(function () {

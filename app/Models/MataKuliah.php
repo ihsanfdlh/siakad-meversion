@@ -10,10 +10,12 @@ class Matakuliah extends Model
 {
     use HasFactory;
 
+    protected $table = 'matakuliahs';
+
     protected $fillable = [
         'kode_mk',
-        'nama_mk',
-        'sks',
+        'nama_mk',                                                                                                                                                                                                      
+        'sks',                  
         'semester',
         'dosen_id',
         'id_prodi',

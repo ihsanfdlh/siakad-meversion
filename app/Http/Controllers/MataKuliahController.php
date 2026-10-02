@@ -47,4 +47,10 @@ class MatakuliahController extends Controller
 
         return redirect()->route('matakuliah.index');
     }
+    public function show(Matakuliah $matakuliah)
+    {
+        $matkul = Matakuliah::get();
+        return "Nama Mata Kuliah: {$matakuliah->nama_mk}";
+    }
+
 }
