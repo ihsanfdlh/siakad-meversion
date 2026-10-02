@@ -35,14 +35,20 @@ Route::get('/home', function () {
 });
 
 //data mahasiswa
-Route::get('/mahasiswa', [MahasiswaController::class, 'index'])
-    ->name('mahasiswa.index');
+Route::resource('/mahasiswa', MahasiswaController::class)->only(['index', 'create', 'store']);
 
-Route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])
-    ->name('mahasiswa.create');
+Route::get('/mahasiswa/{mahasiswa}', function (Mahasiswa $mahasiswa) {
+    return $mahasiswa->nama; // otomatis mengambil data sesuai id pada URL
+});
 
-Route::post('/mahasiswa', [MahasiswaController::class, 'store'])
-    ->name('mahasiswa.store');
+// Route::get('/mahasiswa', [MahasiswaController::class, 'index'])
+//     ->name('mahasiswa.index');
+
+// Route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])
+//     ->name('mahasiswa.create');
+
+// Route::post('/mahasiswa', [MahasiswaController::class, 'store'])
+//     ->name('mahasiswa.store');
 
 //data mata kuliah
 Route::get('/matakuliah', [MatakuliahController::class, 'index'])
@@ -133,6 +139,10 @@ Route::prefix('akademik')->name('akademik.')->group(function () {
     Route::get('/mapel/{kode}', [MatapelajaranController::class, 'show'])
     ->where('kode', '[0-9]+')
     ->name('mapel.show');
+});
+
+Route::fallback(function () {
+    return 'Halaman yang Anda cari tidak ditemukan.';
 });
 
 // Route::get('/mahasiswa/{nim}', function ($nim) {
