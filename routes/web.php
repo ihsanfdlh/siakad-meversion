@@ -140,7 +140,10 @@ Route::fallback(function () {
 
 //langkah kerja 4.2
 Route::get('/sapa', function () {
-    return view('sapa', ['nama' => 'Ihsan Fadhilah']);
+    return view('sapa', [
+        'nama' => 'Ihsan Fadhilah',
+        'kontenHtml' => '<strong>Teks Tebal</strong>',
+    ]);
 });
 
 //tugas mandiri 4.1
