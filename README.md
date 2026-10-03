@@ -4,7 +4,7 @@
   <img src="public/images/ssutama.png">
 </p>
 
-## Identitas
+### Identitas
 
 | Nama     | Ihsan Fadhilah     |
 | NIM      | C030325125         |
