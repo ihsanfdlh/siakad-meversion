@@ -9,7 +9,6 @@
 | Nama | Ihsan Fadhilah |
 |---|---|
 | NIM | C030325125 |
-|---|---|
 | Kelas | TI-3E Axioo |
 
 ## Daftar Route
