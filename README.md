@@ -5,7 +5,7 @@
 ### Halaman Utama
 
 <p align="center">
-  <img src="../public/images/ssutama.png" width="700">
+  <img src="public/images/ssutama.png" width="700">
 </p>
 
 ## Identitas
