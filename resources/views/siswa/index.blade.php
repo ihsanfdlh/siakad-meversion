@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Daftar Siswa</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('judul', 'Daftar Mahasiswa')
+@section('konten')
     <h1>Daftar Siswa</h1>
     <a href="{{ route('akademik.mapel.index') }}">Ke Daftar Mata Pelajaran</a>
     <table border="1" cellpadding="8" cellspacing="0">
@@ -44,5 +41,4 @@
             @endforelse
         </tbody>
     </table>
-</body>
-</html>
+@endsection
