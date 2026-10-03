@@ -15,12 +15,8 @@
                 <th>No</th>
                 <th>NIP</th>
                 <th>Nama</th>
-                <th>Tempat lahir</th>
-                <th>Tanggal lahir</th>
                 <th>Jenis Kelamin</th>
-                <th>Agama</th>
                 <th>No Telepone</th>
-                <th>Pendidikan Terakhir</th>
             </tr>
         </thead>
         <tbody>
@@ -29,12 +25,9 @@
                 <td class="muted">{{ $loop->iteration }}</td>
                 <td><span class="code-pill">{{ $dsn->nip }}</span></td>
                 <td><strong>{{ $dsn->nama }}</strong></td>
-                <td>{{ $dsn->tempat_lahir }}</td>
-                <td>{{ $dsn->tanggal_lahir }}</td>
                 <td>{{ $dsn->jenis_kelamin }}</td>
-                <td>{{ $dsn->agama }}</td>
                 <td>{{ $dsn->no_telp }}</td>
-                <td>{{ $dsn->pendidikan_terakhir }}</td>
+                <td><span class="code-pill""><a href="{{ route('dosen.show', $dsn->id) }}" style="text-decoration: none;">Lihat Detail</a></span></td>
             </tr>
         @empty
             <tr><td class="empty-state" colspan="11"><strong>Belum ada data mahasiswa</strong><span>Tambahkan mahasiswa pertama untuk mulai mengelola data.</span></td></tr>
