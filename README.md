@@ -1,18 +1,14 @@
 # SIAKAD - Sistem Informasi Akademik
 
-## Tampilan Aplikasi
-
-### Halaman Utama
-
 <p align="center">
-  <img src="public/images/ssutama.png" width="700">
+  <img src="public/images/ssutama.png">
 </p>
 
 ## Identitas
 
-**Nama:** Ihsan Fadhilah
-**NIM:** C030325125
-**Program Studi:** D3 Teknik Informatika
+| Nama     | Ihsan Fadhilah     |
+| NIM      | C030325125         |
+| Kelas    | TI-3E Axioo        |
 
 ## Daftar Route
 
