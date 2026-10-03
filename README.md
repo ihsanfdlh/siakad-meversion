@@ -76,57 +76,57 @@ Berikut adalah daftar route yang dibuat pada project berdasarkan hasil `php arti
 
 ### 1. Install dependency
 
-bash
+```bash
 composer install
-
+```
 
 ### 2. Konfigurasi file `.env`
 
 Salin `.env.example` menjadi `.env`, kemudian sesuaikan konfigurasi database.
 
-bash
+```bash
 copy .env.example .env
-
+```
 
 Contoh konfigurasi:
 
-env
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=nama_database
 DB_USERNAME=root
 DB_PASSWORD=
-
+```
 
 ### 3. Generate application key
 
-bash
+```bash
 php artisan key:generate
-
+```
 
 ### 4. Jalankan migration
 
-bash
+```bash
 php artisan migrate
-
+```
 
 ### 5. Jalankan server
 
-bash
+```bash
 php artisan serve
-
+```
 
 ### 6. Buka aplikasi
 
-text
+```text
 http://127.0.0.1:8000
-
+```
 
 ## Perintah Melihat Route
 
 Untuk melihat daftar route pada project:
 
-bash
+```bash
 php artisan route:list
-
+```
