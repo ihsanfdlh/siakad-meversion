@@ -1,76 +1,416 @@
-NAMA    : IHSAN FADHILAH
-NIM     : C030325125
-KELAS   : TI 3E-AXIOO
-MATKUL  : DESAIN WEB        
+# 🎓 Sistem Akademik Laravel
 
-Deskripsi Tugas :
-    membuat sebuah wmini project aplikasi Sistem Informasi Akademik menggunakan Laravel.
-Disini saya menambahkan 4 tabel yaitu tabel Mahasiswa, Dosen, Mata Kuliah dan Ruangan.
-Tabel Dosen dan Mata Kuliah berelasi dengan id_dosen yang menjadi Foreign Key pada tabel Mata Kuliah.
+Aplikasi web sederhana berbasis **Laravel** untuk mengelola data akademik seperti siswa dan mata pelajaran.
 
-Cara menjalankan Project :
-- php artisan server    : untuk menjalankan server laravel
-- php artisan migrate   : untuk menjalankan migrasi dari laravel ke dalam database
-- php artisan db:seed   : untuk menambahkan datai dummy untuk Mahasiswa dan Dosen.
+Project ini dibuat sebagai bagian dari pembelajaran **Framework Laravel** dan penerapan konsep **MVC, Routing, Controller, Model, Migration, dan Blade Template**.
+
+---
+
+## 📌 Tentang Project
+
+Sistem Akademik merupakan aplikasi berbasis web yang digunakan untuk mengelola informasi akademik secara sederhana.
+
+Aplikasi ini memiliki beberapa modul utama:
+
+* 👨‍🎓 Data Siswa
+* 📚 Data Mata Pelajaran
+* 🔗 Navigasi menggunakan Named Route
+* 🧩 Resource Controller
+* 🗄️ Database menggunakan MySQL
+* 🎨 Tampilan menggunakan Blade
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+
+| Teknologi | Keterangan                    |
+| --------- | ----------------------------- |
+| PHP       | Bahasa pemrograman utama      |
+| Laravel   | Framework PHP                 |
+| MySQL     | Database                      |
+| Blade     | Template engine               |
+| HTML      | Struktur halaman              |
+| CSS       | Tampilan halaman              |
+| Composer  | Dependency management         |
+| XAMPP     | Local development environment |
+
+---
+
+## 📂 Struktur Project
+
+text
+project-laravel/
+│
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   │       ├── SiswaController.php
+│   │       └── MatapelajaranController.php
+│   │
+│   └── Models/
+│       ├── Siswa.php
+│       └── Matapelajaran.php
+│
+├── database/
+│   ├── migrations/
+│   └── seeders/
+│
+├── resources/
+│   └── views/
+│       ├── siswa/
+│       └── mapel/
+│
+├── routes/
+│   └── web.php
+│
+├── public/
+│
+├── .env
+├── artisan
+├── composer.json
+└── README.md
 
 
+---
+
+## 🚀 Instalasi
+
+Clone atau salin project ke komputer.
+
+### 1. Install dependency
+
+bash
+composer install
 
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+### 2. Buat file `.env`
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+bash
+copy .env.example .env
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Untuk Linux/macOS:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+bash
+cp .env.example .env
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+### 3. Generate application key
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+bash
+php artisan key:generate
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 4. Konfigurasi database
 
-## Agentic Development
+Buka file:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+text
+.env
 
-```bash
-composer require laravel/boost --dev
 
-php artisan boost:install
-```
+Kemudian sesuaikan konfigurasi database:
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=akademik
+DB_USERNAME=root
+DB_PASSWORD=
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 5. Jalankan migration
 
-## Code of Conduct
+bash
+php artisan migrate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+Jika terdapat seeder:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+bash
+php artisan db:seed
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+atau:
+
+bash
+php artisan migrate:fresh --seed
+
+
+> ⚠️ Perintah `migrate:fresh --seed` akan menghapus tabel yang sudah ada dan membuatnya kembali.
+
+---
+
+## ▶️ Menjalankan Project
+
+Jalankan server Laravel:
+
+bash
+php artisan serve
+
+
+Kemudian buka:
+
+text
+http://127.0.0.1:8000
+
+
+---
+
+## 🧭 Routing
+
+Project menggunakan **Named Route** untuk navigasi antar-modul.
+
+Route utama menggunakan prefix:
+
+php
+Route::prefix('akademik')
+    ->name('akademik.')
+    ->group(function () {
+
+        Route::resource('/siswa', SiswaController::class);
+
+        Route::resource('/mapel', MatapelajaranController::class)
+            ->only(['index', 'show', 'create', 'store']);
+
+    });
+
+
+### Siswa
+
+| Method    | URL                            | Named Route              |
+| --------- | ------------------------------ | ------------------------ |
+| GET       | `/akademik/siswa`              | `akademik.siswa.index`   |
+| GET       | `/akademik/siswa/create`       | `akademik.siswa.create`  |
+| POST      | `/akademik/siswa`              | `akademik.siswa.store`   |
+| GET       | `/akademik/siswa/{siswa}`      | `akademik.siswa.show`    |
+| GET       | `/akademik/siswa/{siswa}/edit` | `akademik.siswa.edit`    |
+| PUT/PATCH | `/akademik/siswa/{siswa}`      | `akademik.siswa.update`  |
+| DELETE    | `/akademik/siswa/{siswa}`      | `akademik.siswa.destroy` |
+
+### Mata Pelajaran
+
+| Method | URL                       | Named Route             |
+| ------ | ------------------------- | ----------------------- |
+| GET    | `/akademik/mapel`         | `akademik.mapel.index`  |
+| GET    | `/akademik/mapel/{mapel}` | `akademik.mapel.show`   |
+| GET    | `/akademik/mapel/create`  | `akademik.mapel.create` |
+| POST   | `/akademik/mapel`         | `akademik.mapel.store`  |
+
+---
+
+## 🔗 Contoh Named Route
+
+Navigasi ke halaman siswa:
+
+blade
+<a href="{{ route('akademik.siswa.index') }}">
+    Daftar Siswa
+</a>
+
+
+Navigasi ke halaman tambah siswa:
+
+blade
+<a href="{{ route('akademik.siswa.create') }}">
+    Tambah Siswa
+</a>
+
+
+Navigasi ke detail siswa:
+
+blade
+<a href="{{ route('akademik.siswa.show', $data->id) }}">
+    Lihat Detail
+</a>
+
+
+Dengan menggunakan named route, URL tidak perlu ditulis secara manual di dalam Blade.
+
+---
+
+## 👨‍🎓 Modul Siswa
+
+Modul siswa digunakan untuk menampilkan dan mengelola data siswa.
+
+Informasi yang tersedia antara lain:
+
+* NIM
+* Nama
+* Program Studi
+* Semester
+
+Contoh data:
+
+| NIM    | Nama            | Prodi                 | Semester |
+| ------ | --------------- | --------------------- | -------: |
+| 230001 | Ihsan Fadhilah  | D3 Teknik Informatika |        3 |
+| 230002 | Muhammad Raihan | D3 Teknik Informatika |        3 |
+
+---
+
+## 📚 Modul Mata Pelajaran
+
+Modul mata pelajaran digunakan untuk mengelola data mata pelajaran yang tersedia dalam sistem akademik.
+
+Data yang dapat dikelola meliputi:
+
+* Kode mata pelajaran
+* Nama mata pelajaran
+* SKS
+* Deskripsi
+
+---
+
+## 🧩 Konsep Laravel yang Digunakan
+
+Project ini menerapkan beberapa konsep dasar Laravel:
+
+### MVC
+
+text
+Model
+  ↓
+Controller
+  ↓
+View
+
+
+**Model** digunakan untuk berinteraksi dengan database.
+
+**Controller** digunakan untuk mengatur proses dan alur aplikasi.
+
+**View** digunakan untuk menampilkan halaman kepada pengguna.
+
+---
+
+### Resource Controller
+
+Project menggunakan resource controller untuk mempermudah pengelolaan operasi CRUD.
+
+Contoh:
+
+bash
+php artisan make:controller SiswaController --resource
+
+
+Resource controller menyediakan method:
+
+text
+index()
+create()
+store()
+show()
+edit()
+update()
+destroy()
+
+
+---
+
+## 🗄️ Database
+
+Database yang digunakan adalah **MySQL**.
+
+Struktur database dapat dikembangkan sesuai kebutuhan sistem akademik.
+
+Contoh tabel:
+
+text
+siswas
+├── id
+├── nim
+├── nama
+├── prodi
+└── semester
+
+matapelajarans
+├── id
+├── kode
+├── nama
+├── sks
+└── deskripsi
+
+
+---
+
+## 🧪 Perintah Laravel yang Sering Digunakan
+
+Melihat daftar route:
+
+bash
+php artisan route:list
+
+
+Membersihkan cache:
+
+bash
+php artisan optimize:clear
+
+
+Membuat controller:
+
+bash
+php artisan make:controller SiswaController --resource
+
+
+Membuat model:
+
+bash
+php artisan make:model Siswa -m
+
+
+Menjalankan migration:
+
+bash
+php artisan migrate
+
+
+Rollback migration:
+
+bash
+php artisan migrate:rollback
+
+
+Menjalankan server:
+
+bash
+php artisan serve
+
+
+---
+
+## 🎯 Tujuan Project
+
+Project ini bertujuan untuk memahami penerapan framework Laravel dalam pembuatan aplikasi berbasis web, khususnya:
+
+1. Memahami konsep MVC.
+2. Memahami penggunaan routing.
+3. Memahami Named Route.
+4. Memahami Resource Controller.
+5. Menghubungkan Laravel dengan database MySQL.
+6. Menggunakan migration dan model.
+7. Membuat tampilan menggunakan Blade.
+8. Mengimplementasikan operasi CRUD.
+
+---
+
+## 👨‍💻 Developer
+
+**Ihsan Fadhilah**
+
+D3 Teknik Informatika
+Politeknik Negeri Banjarmasin
+
+> Built with Laravel, PHP, MySQL, and a lot of ☕.
+
+---
+
+## 📄 License
+
+Project ini dibuat untuk keperluan pembelajaran dan pengembangan akademik.
+
+---
+
+⭐ Jika project ini membantu pembelajaran Laravel, jangan lupa untuk memberikan **star** pada repository.
