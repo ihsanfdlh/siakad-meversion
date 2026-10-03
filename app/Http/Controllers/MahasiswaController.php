@@ -71,8 +71,10 @@ class MahasiswaController extends Controller
      * Display the specified resource.
      */
     public function show(Mahasiswa $mahasiswa)
-    {
-        //
+    {   
+        $mahasiswa->load('prodi');
+        
+        return view('mahasiswa.show', compact('mahasiswa'));
     }
 
     /**

@@ -11,7 +11,7 @@ public function up(): void
         $table->string('nim', 20)->unique();
         $table->string('nama', 100);
         $table->string('tempat_lahir', 50);
-        $table->date('tanggal_lahir');
+        $table->string('tanggal_lahir', 35);
         $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
         $table->string('agama', 20);
         $table->text('alamat');

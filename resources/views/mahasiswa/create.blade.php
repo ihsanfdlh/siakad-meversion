@@ -20,7 +20,7 @@
             </div>
             <div class="field">
                 <label for="tanggal_lahir">Tanggal Lahir</label>
-                <input id="tanggal_lahir" type="date" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" placeholder="Tanggal lahir" required>
+                <input id="tanggal_lahir" type="text" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" placeholder="Contoh : 9 Februari 2007" required>
             </div>
             <div class="field">
                 <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -35,7 +35,7 @@
                 <input id="agama" type="text" name="agama" value="{{ old('agama') }}" placeholder="Agama" required>
             </div>
             <div class="field">
-                <label for="alamat">Alamat</label>
+                <label for="alamat">Alamat Domisili</label>
                 <input id="alamat" type="text" name="alamat" value="{{ old('alamat') }}" placeholder="Alamat" required>
             </div>
             <div class="field">
@@ -68,17 +68,6 @@
                         <option value="12">Semester 12</option>
                         <option value="13">Semester 13</option>
                         <option value="14">Semester 14</option>
-                </select>
-            </div>
-            <div class="field">
-                <label for="status_mhs">Status Mahasiswa</label>
-                <select id="status_mhs" name="status_mhs">
-                    <option value="">-- Status Mahasiswa --</option>
-                        <option value="Aktif">Aktif</option>
-                        <option value="Cuti">Cuti</option>
-                        <option value="Lulus">Lulus</option>
-                        <option value="Non Aktif">Non Aktif</option>
-                        <option value="Drop Out">Drop Out</option>
                 </select>
             </div>
             <div class="field">
