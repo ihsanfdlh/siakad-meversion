@@ -131,7 +131,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::prefix('akademik')->name('akademik.')->group(function () {
     Route::resource('/siswa', SiswaController::class);
 
-    Route::resource('/mapel', MatapelajaranController::class)->only(['index','show,', 'create', 'store']);
+    Route::resource('/mapel', MatapelajaranController::class);
 });
 
 Route::fallback(function () {

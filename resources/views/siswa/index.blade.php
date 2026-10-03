@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>Daftar Siswa</h1>
+    <a href="{{ route('akademik.mapel.index') }}">Ke Daftar Mata Pelajaran</a>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
             <tr>
