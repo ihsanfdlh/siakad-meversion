@@ -15,19 +15,33 @@
                 <th>Nama</th>
                 <th>Prodi</th>
                 <th>Semester</th>
+                <th>Detail</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($siswa as $index => $siswa)
-            <tr>
-                <td>{{ $index + 1 }}</td>
+            @forelse ($siswa as $siswa)
+            <tr style="background-color: {{ $loop->even ? '#f2f2f2' : '#ffffff' }}">
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $siswa->nim }}</td>
                 <td>{{ $siswa->nama }}</td>
                 <td>{{ $siswa->prodi }}</td>
-                <td>{{ $siswa->semester }}</td>
+                <td>
+                    @switch(true)
+                        @case($siswa->semester <= 2)
+                            <span>Mahasiswa Baru</span>
+                            @break
+                        @case($siswa->semester >= 7)
+                            <span>Tingkat Akhir</span>
+                            @break
+                        @default
+                            <span>Mahasiswa Aktif</span>
+                    @endswitch
+                </td>
                 <td><a href="{{ route('akademik.siswa.show', $siswa->id) }}">Lihat Detail</a></td>
             </tr>
-            @endforeach
+            @empty
+                <tr><td colspan="6">Belum ada data mahasiswa.</td></tr>
+            @endforelse
         </tbody>
     </table>
 </body>
