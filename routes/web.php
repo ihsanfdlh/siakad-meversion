@@ -158,6 +158,13 @@ Route::get('/profil', function () {
 Route::get('/statistik', function () {
     return view('akademik.statistik');
 });
+
+//tugas mandiri 5.2
+Route::get('/xss', function () {
+    $nama = "<script>alert('XSS')</script>";
+
+    return view('xss', compact('nama'));
+});
 // Route::get('/mahasiswa/{nim}', function ($nim) {
 //     return "Detail mahasiswa dengan NIM: {$nim}";
 // });
