@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
-<head><title>Detail Mata Pelajaran</title></head>
-<body>
+@extends('layouts.app')
+@section('judul', 'Detail Mata Pelajaran - ' . $mapel->nama_mk)
+@section('konten')
     <h1>Detail Mata Pelajaran</h1>
     <p><strong>Kode:</strong> {{ $mapel->kode_mk }}</p>
     <p><strong>Nama:</strong> {{ $mapel->nama_mk }}</p>
     <a href="{{ route('akademik.mapel.index') }}">&laquo; Kembali ke Daftar</a>
-</body>
-</html>
+@endsection
