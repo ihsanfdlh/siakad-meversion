@@ -30,17 +30,15 @@ class MatapelajaranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nim' => 'required',
-            'nama' => 'required',
-            'prodi' => 'required',
-            'semester' => 'required|integer',
+            'kode_mk' => 'required',
+            'nama_mk' => 'required',
+            'sks' => 'required|integer',
         ]);
 
         Matapelajaran::create([
-            'nim' => $request->nim,
-            'nama' => $request->nama,
-            'prodi' => $request->prodi,
-            'semester' => $request->semester,
+            'kode_mk' => $request->kode_mk,
+            'nama_mk' => $request->nama_mk,
+            'sks' => $request->sks,
         ]);
 
         return redirect()->route('mapel.index')

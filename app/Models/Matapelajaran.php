@@ -12,5 +12,6 @@ class Matapelajaran extends Model
     protected $fillable = [
         'kode_mk',
         'nama_mk',
+        'sks',
     ];
 }

@@ -13,17 +13,29 @@
                 <th>No</th>
                 <th>Kode</th>
                 <th>Nama</th>
+                <th>SKS</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($mapel as $index => $mapel)
-            <tr>
-                <td>{{ $index + 1 }}</td>
+            @forelse ($mapel as $mapel)
+            <tr style="background-color: {{ $loop->even ? '#abb6ff' : '#e0e4ff' }}">
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $mapel->kode_mk }}</td>
                 <td>{{ $mapel->nama_mk }}</td>
+                <td>
+                    @switch(true)
+                        @case($mapel->sks >= 3)
+                            <span><strong>SKS Besar</strong></span>
+                            @break
+                        @default
+                            <span>SKS Kecil</span>
+                    @endswitch
+                </td>
                 <td><a href="{{ route('akademik.mapel.show', $mapel->id) }}">Lihat Detail</a></td>
             </tr>
-            @endforeach
+            @empty
+                <tr><td colspan="6">Belum ada data mata pelajaran.</td></tr>
+            @endforelse
         </tbody>
     </table>
 </body>
