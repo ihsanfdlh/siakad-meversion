@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MahasiswaController;
@@ -112,6 +113,20 @@ Route::get('/xss', function () {
 
     return view('xss', compact('nama'));
 });
+
+//route login
+Route::get('/login', [AuthController::class, 'showLogin'])
+    ->name('login');
+
+Route::post('/login', [AuthController::class, 'login'])
+    ->name('login.process');
+
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('auth')->name('dashboard');
 // Route::get('/mahasiswa/{nim}', function ($nim) {
 //     return "Detail mahasiswa dengan NIM: {$nim}";
 // });

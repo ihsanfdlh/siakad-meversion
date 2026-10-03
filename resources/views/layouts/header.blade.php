@@ -7,6 +7,7 @@
     <title>@yield('title', 'SIAKAD')</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
@@ -54,6 +55,9 @@
                     Ruangan
                 </a>
 
+                <a class="{{ request()->routeIs('login') ? 'active' : '' }}" href="{{ route('login') }}">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
             </nav>
 
         </div>
