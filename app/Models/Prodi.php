@@ -2,9 +2,10 @@
 
 namespace App\Models; // Menyatakan namespace model ini berada di folder App\Models.
 
+use App\Models\Dosen; // Mengimpor model Dosen agar bisa digunakan pada relasi kaprodi().
 use Illuminate\Database\Eloquent\Factories\HasFactory; // Mengimpor trait HasFactory agar model bisa dibuat factory untuk testing/seeding.
 use Illuminate\Database\Eloquent\Model; // Mengimpor class Model dari Eloquent untuk membuat model Laravel.
-use App\Models\Dosen; // Mengimpor model Dosen agar bisa digunakan pada relasi kaprodi().
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Prodi extends Model // Mendefinisikan class Prodi yang mewakili tabel prodi di database.
 {
@@ -28,4 +29,5 @@ class Prodi extends Model // Mendefinisikan class Prodi yang mewakili tabel prod
     {
         return $this->hasMany(Matakuliah::class, 'id_prodi'); // Menghubungkan ke model Prodi lain dengan foreign key id_prodi.
     }
+    public function mahasiswa(): HasMany { return $this->hasMany( Mahasiswa::class, 'id_prodi', 'id' ); }
 }

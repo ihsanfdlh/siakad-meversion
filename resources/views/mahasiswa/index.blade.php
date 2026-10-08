@@ -16,10 +16,10 @@
                 <th>NIM</th>
                 <th>Nama</th>
                 <th>Jenis Kelamin</th>
-                <th>No Telepone</th>
                 <th>Angkatan</th>
                 <th>Semester</th>
                 <th>Prodi</th>
+                <th>Nilai</th>
                 <th>Detail</th>
             </tr>
         </thead>
@@ -30,10 +30,14 @@
                 <td><span class="code-pill">{{ $mhs->nim }}</span></td>
                 <td><strong>{{ $mhs->nama }}</strong></td>
                 <td>{{ $mhs->jenis_kelamin }}</td>
-                <td>{{ $mhs->no_telp }}</td>
                 <td>{{ $mhs->angkatan }}</td>
                 <td><span class="status-pill">{{ $mhs->semester }}</span></td>
                 <td>{{ $mhs->prodi->nama }}</td>
+                <td>@forelse ($mhs->nilai as $n)
+                <p>{{ $n->mhs->nama_mk ?? '-' }}: {{ $n->nilai }}</p>
+                @empty
+                <p>Belum ada data nilai.</p>
+                @endforelse</td>
                 <td><span class="code-pill""><a href="{{ route('mahasiswa.show', $mhs->id_mahasiswa) }}" style="text-decoration: none;">Lihat Detail</a></span></td>
             </tr>
         @empty

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Mahasiswa extends Model
 {
@@ -25,8 +27,6 @@ class Mahasiswa extends Model
         'semester',
         'id_prodi',
     ];
-    public function prodi()
-    {
-        return $this->belongsTo(Prodi::class, 'id_prodi');
-    }
+    public function prodi(): BelongsTo { return $this->belongsTo( Prodi::class, 'id_prodi', 'id' ); }
+    public function nilai(): HasMany { return $this->hasMany( NilaiMatakuliah::class, 'mahasiswa_id', 'id_mahasiswa' ); }
 }
