@@ -7,6 +7,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\MatapelajaranController;
 use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\QueryBuilderController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\SiswaController;
 use App\Models\Dosen;
@@ -36,6 +37,18 @@ Route::get('/home', function () {
 
 //data mahasiswa
 Route::resource('/mahasiswa', MahasiswaController::class)->only(['index', 'create', 'store', 'show']);
+
+Route::get('/query-builder', [ QueryBuilderController::class, 'tampilkanSemua' ]);
+Route::get('/query-builder/filter', [ QueryBuilderController::class, 'tampilkanFilter' ]);
+/* |-------------------------------------------------------------------------- | Statistik |-------------------------------------------------------------------------- */
+Route::get('/statistik-prodi', [ QueryBuilderController::class, 'statistikProdi' ]);
+/* |-------------------------------------------------------------------------- | INSERT |-------------------------------------------------------------------------- */
+Route::get('/mahasiswa2/tambah', [ QueryBuilderController::class, 'formMahasiswa' ]);
+Route::post('/mahasiswa2/simpan', [ QueryBuilderController::class, 'simpanMahasiswa' ]);
+/* |-------------------------------------------------------------------------- | UPDATE |-------------------------------------------------------------------------- */
+Route::get('/mahasiswa2/update/{id}', [ QueryBuilderController::class, 'updateMahasiswa' ]);
+/* |-------------------------------------------------------------------------- | DELETE |-------------------------------------------------------------------------- */
+Route::get('/mahasiswa2/delete/{id}', [ QueryBuilderController::class, 'deleteMahasiswa' ]);
 
 //data mata kuliah
 Route::resource('/matakuliah', MatakuliahController::class);
