@@ -54,6 +54,14 @@
             <td>Program Studi </td>
             <td>{{ $mahasiswa->prodi?->nama ?? 'Prodi tidak ditemukan' }}</td>
         </tr>
+        <tr>
+            <td>Nilai</td>
+            <td>@forelse ($mahasiswa->nilai as $n)
+                <p>{{ $n->mahasiswa->nama_mk ?? '-' }}: {{ $n->nilai }}</p>
+                @empty
+                <p>Belum ada data nilai.</p>
+                @endforelse</td>    
+        </tr>
     </table></div>
 </div>
 @endsection
