@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.header')
 
-<head>
-    <title>Statistik Prodi</title>
-</head>
+@section('title', 'Statistik Prodi')
 
+@section('content')
 <body>
 
     <h2>
@@ -66,5 +64,4 @@
     </table>
 
 </body>
-
-</html>
+@endsection

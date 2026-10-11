@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Data Mahasiswa</title>
-</head>
+@extends('layouts.header')
 
+@section('title', 'Query Builder')
+
+@section('content')
 <body>
 
     <h2>Data Mahasiswa</h2>
@@ -120,4 +119,4 @@
         {{ $data->links() }}
     </div>
 </body>
-</html>
+@endsection

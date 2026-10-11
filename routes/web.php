@@ -38,11 +38,16 @@ Route::get('/home', function () {
 //data mahasiswa
 Route::resource('/mahasiswa', MahasiswaController::class)->only(['index', 'create', 'store', 'show']);
 
+//data mata kuliah
+Route::resource('/matakuliah', MatakuliahController::class);
+
 Route::get('/query-builder', [ QueryBuilderController::class, 'tampilkanSemua' ]);
 Route::get('/query-builder/filter', [ QueryBuilderController::class, 'tampilkanFilter' ]);
 Route::get('/query-builder/filter2', [ QueryBuilderController::class, 'tampilkanFilter2' ]);
 /* |-------------------------------------------------------------------------- | Statistik |-------------------------------------------------------------------------- */
 Route::get('/statistik-prodi', [ QueryBuilderController::class, 'statistikProdi' ]);
+
+//cuman buat belajar
 /* |-------------------------------------------------------------------------- | INSERT |-------------------------------------------------------------------------- */
 Route::get('/mahasiswa2/tambah', [ QueryBuilderController::class, 'formMahasiswa' ]);
 Route::post('/mahasiswa2/simpan', [ QueryBuilderController::class, 'simpanMahasiswa' ]);
@@ -50,13 +55,6 @@ Route::post('/mahasiswa2/simpan', [ QueryBuilderController::class, 'simpanMahasi
 Route::get('/mahasiswa2/update/{id}', [ QueryBuilderController::class, 'updateMahasiswa' ]);
 /* |-------------------------------------------------------------------------- | DELETE |-------------------------------------------------------------------------- */
 Route::get('/mahasiswa2/delete/{id}', [ QueryBuilderController::class, 'deleteMahasiswa' ]);
-
-//data mata kuliah
-Route::resource('/matakuliah', MatakuliahController::class);
-Route::get('/matakuliah/{matakuliah}', [MatakuliahController::class, 'show'])->name('matakuliah.show');
-Route::get('/matakuliah/{matakuliah}/edit', [MatakuliahController::class, 'edit'])->name('matakuliah.edit');
-Route::put('/matakuliah/{matakuliah}', [MatakuliahController::class, 'update'])->name('matakuliah.update');
-Route::delete('/matakuliah/{matakuliah}', [MatakuliahController::class, 'destroy'])->name('matakuliah.destroy');
 
 //data dosen
 Route::resource('/dosen', DosenController::class);
