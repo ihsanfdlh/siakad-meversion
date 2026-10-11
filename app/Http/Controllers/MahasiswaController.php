@@ -164,8 +164,9 @@ class MahasiswaController extends Controller
     public function tanpaEagerLoading()
     {
         DB::enableQueryLog();
+        DB::flushQueryLog();
 
-        $mahasiswa = Mahasiswa::take(5)->get();
+        $mahasiswa = Mahasiswa::take(10)->get();
 
         foreach ($mahasiswa as $m) {
             $m->nilai;
@@ -174,6 +175,7 @@ class MahasiswaController extends Controller
         $queries = DB::getQueryLog();
 
         dd([
+            'metode' => 'Tanpa Eager Loading',
             'jumlah_query' => count($queries),
             'query' => $queries,
         ]);
@@ -181,9 +183,10 @@ class MahasiswaController extends Controller
     public function denganEagerLoading()
     {
         DB::enableQueryLog();
+        DB::flushQueryLog();
 
         $mahasiswa = Mahasiswa::with('nilai')
-            ->take(5)
+            ->take(10)
             ->get();
 
         foreach ($mahasiswa as $m) {
@@ -193,6 +196,7 @@ class MahasiswaController extends Controller
         $queries = DB::getQueryLog();
 
         dd([
+            'metode' => 'Dengan Eager Loading',
             'jumlah_query' => count($queries),
             'query' => $queries,
         ]);

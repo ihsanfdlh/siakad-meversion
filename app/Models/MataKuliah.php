@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Dosen;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class MataKuliah extends Model
 {
@@ -27,5 +28,9 @@ class MataKuliah extends Model
     public function prodi()
     {
         return $this->belongsTo(Prodi::class, 'id_prodi');
+    }
+    public function nilaiMatakuliah(): HasMany
+    {
+        return $this->hasMany(NilaiMatakuliah::class, 'matakuliah_id', 'id');
     }
 }

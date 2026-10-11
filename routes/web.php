@@ -53,6 +53,10 @@ Route::get('/mahasiswa2/delete/{id}', [ QueryBuilderController::class, 'deleteMa
 
 //data mata kuliah
 Route::resource('/matakuliah', MatakuliahController::class);
+Route::get('/matakuliah/{matakuliah}', [MatakuliahController::class, 'show'])->name('matakuliah.show');
+Route::get('/matakuliah/{matakuliah}/edit', [MatakuliahController::class, 'edit'])->name('matakuliah.edit');
+Route::put('/matakuliah/{matakuliah}', [MatakuliahController::class, 'update'])->name('matakuliah.update');
+Route::delete('/matakuliah/{matakuliah}', [MatakuliahController::class, 'destroy'])->name('matakuliah.destroy');
 
 //data dosen
 Route::resource('/dosen', DosenController::class);

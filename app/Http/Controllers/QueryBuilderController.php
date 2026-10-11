@@ -48,7 +48,7 @@ class QueryBuilderController extends Controller
                 'p.nama as nama_prodi',
                 'm.semester'
             )
-            ->get();
+            ->paginate(10);
 
         return view('demo.query-builder', compact('data'));
     }
@@ -72,7 +72,7 @@ class QueryBuilderController extends Controller
                 'p.nama as nama_prodi',
                 'm.semester'
             )
-            ->get();
+            ->paginate(10);
 
         return view('demo.query-builder', compact('data'));
     }
