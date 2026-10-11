@@ -32,7 +32,11 @@
                     <td><span class="code-pill">{{ $dsn->nip }}</span></td>
                     <td><strong>{{ $dsn->nama }}</strong></td>
                     <td>{{ $dsn->no_telp }}</td>
-                    <td><span class="code-pill""><a href="{{ route('dosen.show', $dsn->id) }}" style="text-decoration: none;">Lihat Detail</a></span></td>
+                    <td>
+                        <span class="code-pill"">
+                            <a href="{{ route('dosen.show', $dsn->id) }}" style="text-decoration: none;">Lihat Detail</a>
+                        </span>
+                    </td>
                     <td>
                         <a href="{{ route('dosen.edit', $dsn->id) }}" class="status-pill" style="text-decoration: none">Edit</a>
                     </td>

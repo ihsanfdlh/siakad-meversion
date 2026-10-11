@@ -66,6 +66,7 @@ Route::resource('/ruang', RuangController::class);
 Route::resource('/prodi', ProdiController::class);
 
 //data jurusan
+Route::get('/jurusan/statistik', [ JurusanController::class, 'statistik' ])->name('jurusan.statistik');
 Route::resource('/jurusan', JurusanController::class);
 
 //langkah kerja 1.2

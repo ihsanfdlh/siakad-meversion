@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\Jurusan;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JurusanController extends Controller
 {
@@ -50,8 +52,9 @@ class JurusanController extends Controller
      * Display the specified resource.
      */
     public function show(Jurusan $jurusan)
-    {
-        //
+    {   
+        $jurusan->load('prodis');
+        return view('jurusan.show', compact('jurusan'));
     }
 
     /**
@@ -95,5 +98,28 @@ class JurusanController extends Controller
         return redirect()
             ->route('jurusan.index')
             ->with('success', 'Data berhasil dihapus.');
+    }
+    public function statistik()
+    {
+    $rekap = DB::table('jurusans')
+            ->join(
+                'prodis',
+                'jurusans.id',
+                '=',
+                'prodis.id_jurusan'
+            )
+            ->select(
+                'jurusans.id',
+                'jurusans.nama',
+                DB::raw('COUNT(prodis.id) as jumlah')
+            )
+            ->groupBy(
+                'jurusans.id',
+                'jurusans.nama',
+            )
+            ->orderBy('jurusans.nama')
+            ->get();
+
+        return view('jurusan.statistik', compact('rekap'));
     }
 }

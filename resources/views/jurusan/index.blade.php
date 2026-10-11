@@ -2,8 +2,15 @@
 @section('title', 'JURUSAN')
 @section('content')
 <div class="section-heading">
-    <div><span class="eyebrow">DATA AKADEMIK</span><h1>Daftar Jurusan</h1><p>Kelola informasi Jurusan yang terdaftar di sistem.</p></div>
-    <a class="button button-primary" href="{{ route('jurusan.create') }}">+ Tambah Jurusan</a>
+    <div>
+        <span class="eyebrow">DATA AKADEMIK</span>
+        <h1>Daftar Jurusan</h1>
+        <p>Kelola informasi Jurusan yang terdaftar di sistem.</p>
+    </div>
+    <div>
+        <a class="button button-secondary" href="{{ route('jurusan.statistik') }}">Statistik</a>
+        <a class="button button-primary" href="{{ route('jurusan.create') }}">+ Tambah Jurusan</a>
+    </div>
 </div>
 @if (session('success'))<div class="alert alert-success">{{ session('success') }}</div>@endif
 <div class="table-card">
@@ -26,6 +33,11 @@
                         </td>
                         <td>{{ $jrsn->kajur->nama ?? 'Belum ada Kepala Jurusan' }}</td>
                         <td>{{ $jrsn->sekjur->nama ?? 'Belum ada Sekretaris Jurusan' }}</td>
+                        <td>
+                            <span class="code-pill"">
+                                <a href="{{ route('jurusan.show', $jrsn->id) }}" style="text-decoration: none;">Lihat Detail</a>
+                            </span>
+                        </td>
                         <td>
                             <a href="{{ route('jurusan.edit', $jrsn->id) }}" class="status-pill" style="text-decoration: none">Edit</a>
                         </td>
