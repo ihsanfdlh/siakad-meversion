@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
-use App\Models\Dosen;
-use App\Models\Matakuliah;
-use App\Models\Prodi;
+use app\Models\Dosen;
+use app\Models\Matakuliah;
+use app\Models\Prodi;
 use Illuminate\Http\Request;
 
 class MatakuliahController extends Controller

@@ -40,6 +40,7 @@ Route::resource('/mahasiswa', MahasiswaController::class)->only(['index', 'creat
 
 Route::get('/query-builder', [ QueryBuilderController::class, 'tampilkanSemua' ]);
 Route::get('/query-builder/filter', [ QueryBuilderController::class, 'tampilkanFilter' ]);
+Route::get('/query-builder/filter2', [ QueryBuilderController::class, 'tampilkanFilter2' ]);
 /* |-------------------------------------------------------------------------- | Statistik |-------------------------------------------------------------------------- */
 Route::get('/statistik-prodi', [ QueryBuilderController::class, 'statistikProdi' ]);
 /* |-------------------------------------------------------------------------- | INSERT |-------------------------------------------------------------------------- */

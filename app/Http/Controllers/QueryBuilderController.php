@@ -14,8 +14,17 @@ class QueryBuilderController extends Controller
     */
     public function tampilkanSemua()
     {
-        $data = DB::table('mahasiswas')
-            ->get();
+        $data = DB::table('mahasiswas as m')
+            ->join('prodis as p', 'm.id_prodi', '=', 'p.id')
+            ->orderBy('m.id_mahasiswa', 'asc')
+            ->select(
+                'm.id_mahasiswa',
+                'm.nim',
+                'm.nama as nama_mahasiswa',
+                'p.nama as nama_prodi',
+                'm.semester'
+            )
+            ->paginate(10);
 
         return view('demo.query-builder', compact('data'));
     }
@@ -28,14 +37,45 @@ class QueryBuilderController extends Controller
     */
     public function tampilkanFilter()
     {
-        $data = DB::table('mahasiswas')
-            ->where('semester', '>=', 3)
-            ->orderBy('nama')
+        $data = DB::table('mahasiswas as m')
+            ->join('prodis as p', 'm.id_prodi', '=', 'p.id')
+            ->where('m.semester', '>=', 3)
+            ->orderBy('m.nama', 'asc')
+            ->select(
+                'm.id_mahasiswa',
+                'm.nim',
+                'm.nama as nama_mahasiswa',
+                'p.nama as nama_prodi',
+                'm.semester'
+            )
             ->get();
 
         return view('demo.query-builder', compact('data'));
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | READ - Filter mahasiswa semester antar 3 & 6
+    |--------------------------------------------------------------------------
+    */
+    public function tampilkanFilter2()
+    {
+        $data = DB::table('mahasiswas as m')
+            ->join('prodis as p', 'm.id_prodi', '=', 'p.id')
+            ->where('p.nama', 'Teknik Informatika')
+            ->whereBetween('m.semester', [3, 6])
+            ->orderBy('m.nama', 'asc')
+            ->select(
+                'm.id_mahasiswa',
+                'm.nim',
+                'm.nama as nama_mahasiswa',
+                'p.nama as nama_prodi',
+                'm.semester'
+            )
+            ->get();
+
+        return view('demo.query-builder', compact('data'));
+    }
 
     /*
     |--------------------------------------------------------------------------

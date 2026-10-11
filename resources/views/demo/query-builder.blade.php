@@ -1,4 +1,3 @@
-```blade
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +36,12 @@
 
         |
 
+        <a href="/query-builder/filter2">
+            Filter Semester Antara 3 & 6
+        </a>
+
+        |
+
         <a href="/statistik-prodi">
             Statistik Prodi
         </a>
@@ -50,7 +55,7 @@
             <th>NIM</th>
             <th>Nama</th>
             <th>Semester</th>
-            <th>ID Prodi</th>
+            <th>Nama Prodi</th>
             <th>Aksi</th>
         </tr>
 
@@ -68,7 +73,7 @@
                 </td>
 
                 <td>
-                    {{ $mahasiswa->nama }}
+                    {{ $mahasiswa->nama_mahasiswa }}
                 </td>
 
                 <td>
@@ -76,7 +81,7 @@
                 </td>
 
                 <td>
-                    {{ $mahasiswa->id_prodi }}
+                    {{ $mahasiswa->nama_prodi }}
                 </td>
 
                 <td>
@@ -111,7 +116,8 @@
         @endforelse
 
     </table>
-
+    <div style="margin-top: 20px;">
+        {{ $data->links() }}
+    </div>
 </body>
 </html>
-```
