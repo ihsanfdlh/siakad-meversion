@@ -116,6 +116,10 @@ class DosenController extends Controller
      */
     public function destroy(Dosen $dosen)
     {
-        //
+        $dosen->delete();
+
+        return redirect()
+            ->route('dosen.index')
+            ->with('success', 'Data dosen berhasil dihapus.');
     }
 }
