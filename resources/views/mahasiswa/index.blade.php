@@ -34,6 +34,7 @@
                     <th>Nama</th>
                     <th>Semester</th>
                     <th>Prodi</th>
+                    <th>Detail</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,7 +51,7 @@
                             </span>
                         </td>
                         <td>
-                            <a href="{{ route('mahasiswa.edit', $mhs->id_mahasiswa) }}">Edit</a>
+                            <a href="{{ route('mahasiswa.edit', $mhs->id_mahasiswa) }}" class="status-pill" style="text-decoration: none;">Edit</a>
                         </td>
                         <td>
                             <form action="{{ route('mahasiswa.destroy', $mhs->id_mahasiswa) }}"
@@ -60,7 +61,7 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button  class="code-pill" type="submit">Delete</button>
+                                <button  class="code-pill" type="submit" style="border: none; cursor:pointer; background-color: #ffebed; color: #ff263b">Delete</button>
                             </form>
                         </td>
                     </tr>

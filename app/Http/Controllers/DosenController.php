@@ -12,7 +12,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $dosen = Dosen::all();
+        $dosen = Dosen::paginate(20);
 
         return view('dosen.index', compact('dosen'));
     }
@@ -73,7 +73,7 @@ class DosenController extends Controller
      */
     public function edit(Dosen $dosen)
     {
-        //
+        return view('dosen.edit', compact('dosen'));
     }
 
     /**
@@ -81,7 +81,34 @@ class DosenController extends Controller
      */
     public function update(Request $request, Dosen $dosen)
     {
-        //
+        $request->validate([
+            'nip' => 'required',
+            'nama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
+            'email' => 'required',
+            'pendidikan_terakhir' => 'required',
+        ]);
+
+        $dosen->update([
+            'nip' => $request->nip,
+            'nama' => $request->nama,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
+            'email' => $request->email,
+            'pendidikan_terakhir' => $request->pendidikan_terakhir,
+        ]);
+
+        return redirect()->route('dosen.index')
+                         ->with('success', 'Data Dosen berhasil diupdate.');
     }
 
     /**
