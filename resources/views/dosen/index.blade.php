@@ -1,5 +1,5 @@
 @extends('layouts.header')
-@section('title', 'Dosen')
+@section('title', 'DOSEN')
 
 @section('content')
 <div class="section-heading">

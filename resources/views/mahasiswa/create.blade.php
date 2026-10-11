@@ -1,6 +1,6 @@
 @extends('layouts.header')
 
-@section('title', 'Tambah Mahasiswa')
+@section('title', 'TAMBAH MAHASISWA')
 
 @section('content')
 

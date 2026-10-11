@@ -1,15 +1,17 @@
 @extends('layouts.header')
-@section('title', 'Detail Mahasiswa ' . $mahasiswa->nama)
+@section('title', $mahasiswa->nama)
 @section('content')
 <div class="section-heading">
-    <a class="back-link" href="{{ route('mahasiswa.index') }}">&larr; Kembali ke mahasiswa</a>
+    <div>
+        <a class="back-link" href="{{ route('mahasiswa.index') }}">&larr; Kembali ke mahasiswa</a>
+        <span class="eyebrow">DATA MAHASISWA</span>
+        <h1>Biodata {{ $mahasiswa->nama }}</h1>
+        <p>Kelola detail biodata mahasiswa.</p>
+    </div>
 </div>
 <div class="table-card">
     <div class="table-scroll"><table>
         {{-- <table border=1 > --}}
-        <tr>
-            <td colspan=2 align=center><h2>DETAIL BIODATA - {{ $mahasiswa->nama }}</h2></td>
-        </tr>
         <tr>
             <td>Nama </td>
             <td><strong>{{ $mahasiswa->nama }}</strong></td>

@@ -1,8 +1,13 @@
 @extends('layouts.header')
-@section('title', 'Detail Dosen ' . $dosen->nama)
+@section('title', $dosen->nama)
 @section('content')
 <div class="section-heading">
-    <a class="back-link" href="{{ route('dosen.index') }}">&larr; Kembali ke dosen</a>
+    <div>
+        <a class="back-link" href="{{ route('dosen.index') }}">&larr; Kembali ke dosen</a>
+        <span class="eyebrow">DATA DOSEN</span>
+        <h1>Biodata {{ $dosen->nama }}</h1>
+        <p>Kelola detail biodata dosen.</p>
+    </div>
 </div>
 <div class="table-card">
     <div class="table-scroll"><table>

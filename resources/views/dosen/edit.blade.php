@@ -1,10 +1,10 @@
 @extends('layouts.header')
-@section('title', 'Update '. $dosen->nama)
+@section('title', 'UPDATE - '. $dosen->nama)
 @section('content')
 <div class="form-heading">
     <a class="back-link" href="{{ route('dosen.index') }}">&larr; Kembali ke dosen</a>
     <span class="eyebrow">UPDATE DATA DOSEN</span>
-    <h1>Update data {{ $dosen->nama }}</h1>
+    <h1>Update {{ $dosen->nama }}</h1>
     <p>Perbarui data Dosen.</p>
 </div>
 @if ($errors->any())
@@ -89,7 +89,7 @@
             </div>
         </div>
         <div class="form-actions">
-            <a class="button button-secondary" href="{{ route('dosen.index') }}">Batal</a><button class="button button-primary" type="submit">Simpan Dosen</button>
+            <a class="button button-secondary" href="{{ route('dosen.index') }}">Batal</a><button class="button button-primary" type="submit">Simpan</button>
         </div>
     </form>
 @endsection

@@ -1,5 +1,5 @@
 @extends('layouts.header')
-@section('title', 'Tambah Jurusan')
+@section('title', 'TAMBAH JURUSAN')
 @section('content')
 <div class="form-heading">
     <a class="back-link" href="{{ route('prodi.index') }}">&larr; Kembali ke Jurusan</a>
@@ -19,7 +19,7 @@
             <div class="field"><label for="nama">Nama Jurusan</label>
                 <input id="nama" type="text" name="nama" value="{{ old('nama') }}" placeholder="Nama Jurusan" required></div>
             <div class="field">
-                <label for="id_kajur">Dosen</label>
+                <label for="id_kajur">Kepala Jurusan</label>
                 <select id="id_kajur" name="id_kajur">
                     <option value="">-- Pilih Kepala Jurusan --</option>
 
@@ -32,7 +32,7 @@
                 </select>
             </div>
             <div class="field">
-                <label for="id_sekjur">Dosen</label>
+                <label for="id_sekjur">Sekretaris Jurusan</label>
                 <select id="id_sekjur" name="id_sekjur">
                     <option value="">-- Pilih Sekretaris Jurusan --</option>
 

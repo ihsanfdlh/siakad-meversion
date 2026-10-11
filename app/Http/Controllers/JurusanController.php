@@ -59,7 +59,9 @@ class JurusanController extends Controller
      */
     public function edit(Jurusan $jurusan)
     {
-        //
+        $dosen = Dosen::all();
+        
+        return view('jurusan.edit', compact('jurusan','dosen'));
     }
 
     /**
@@ -67,7 +69,20 @@ class JurusanController extends Controller
      */
     public function update(Request $request, Jurusan $jurusan)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'id_kajur' => 'required|exists:dosens,id',
+            'id_sekjur' => 'required|exists:dosens,id',
+        ]);
+
+        $jurusan->update([
+            'nama' => $request->nama,
+            'id_kajur' => $request->id_kajur,
+            'id_sekjur' => $request->id_sekjur,
+        ]);
+
+        return redirect()->route('jurusan.index')
+                         ->with('success', 'Data Jurusan berhasil ditambahkan.');
     }
 
     /**
@@ -75,6 +90,10 @@ class JurusanController extends Controller
      */
     public function destroy(Jurusan $jurusan)
     {
-        //
+        $jurusan->delete();
+
+        return redirect()
+            ->route('jurusan.index')
+            ->with('success', 'Data berhasil dihapus.');
     }
 }

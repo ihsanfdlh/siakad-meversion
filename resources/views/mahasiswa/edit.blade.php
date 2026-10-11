@@ -1,13 +1,13 @@
 @extends('layouts.header')
-@section('title', 'Tambah Mahasiswa')
+@section('title', 'UPDATE - '. $mahasiswa->nama)
 @section('content')
 <div class="form-heading">
     <a class="back-link" href="{{ route('mahasiswa.index') }}">
         &larr; Kembali ke mahasiswa
     </a>
     <span class="eyebrow">DATA MAHASISWA</span>
-    <h1>Tambah Mahasiswa</h1>
-    <p>Isi informasi berikut untuk menambahkan mahasiswa baru.</p>
+    <h1>Update {{ $mahasiswa->nama }}</h1>
+    <p>Perbarui data mahasiswa.</p>
 </div>
 
 @if ($errors->any())
@@ -176,9 +176,7 @@
 
                 @foreach ($prodi as $item)
                     <option
-                        value="{{ $item->id }}"
-                        {{ old('id_prodi', $mahasiswa->id_prodi) == $item->id ? 'selected' : '' }}
-                    >
+                        value="{{ $item->id }}" {{ old('id_prodi', $mahasiswa->id_prodi) == $item->id ? 'selected' : '' }}>
                         {{ $item->nama }} ({{ $item->jenjang }})
                     </option>
                 @endforeach
