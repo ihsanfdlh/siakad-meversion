@@ -4,7 +4,10 @@
 @section('content')
 <div class="section-heading">
     <div><span class="eyebrow">DATA AKADEMIK</span><h1>Daftar Program Studi</h1><p>Kelola informasi Program Studi yang terdaftar di sistem.</p></div>
-    <a class="button button-primary" href="{{ route('prodi.create') }}">+ Tambah Program Studi</a>
+    <div>
+        <a class="button button-secondary" href="{{ route('statistik-prodi') }}">Statistik</a>
+        <a class="button button-primary" href="{{ route('prodi.create') }}">+ Tambah Program Studi</a>
+    </div>
 </div>
 @if (session('success'))<div class="alert alert-success">{{ session('success') }}</div>@endif
 <div class="table-card">

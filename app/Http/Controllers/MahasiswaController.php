@@ -67,9 +67,9 @@ class MahasiswaController extends Controller
     }
     public function edit(Mahasiswa $mahasiswa)
     {
-        $prodi = Prodi::orderBy('nama')->get();
+        $prodi = Prodi::all();
 
-        return view('mahasiswa.edit', compact('mahasiswa', 'prodi'));
+        return view('mahasiswa.edit', compact('mahasiswa','prodi'));
     }
     public function update(Request $request, Mahasiswa $mahasiswa)
     {

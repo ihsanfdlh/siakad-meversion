@@ -36,7 +36,7 @@ Route::get('/home', function () {
 });
 
 //data mahasiswa
-Route::resource('/mahasiswa', MahasiswaController::class)->only(['index', 'create', 'store', 'show']);
+Route::resource('/mahasiswa', MahasiswaController::class);
 
 //data mata kuliah
 Route::resource('/matakuliah', MatakuliahController::class);
@@ -45,7 +45,7 @@ Route::get('/query-builder', [ QueryBuilderController::class, 'tampilkanSemua' ]
 Route::get('/query-builder/filter', [ QueryBuilderController::class, 'tampilkanFilter' ]);
 Route::get('/query-builder/filter2', [ QueryBuilderController::class, 'tampilkanFilter2' ]);
 /* |-------------------------------------------------------------------------- | Statistik |-------------------------------------------------------------------------- */
-Route::get('/statistik-prodi', [ QueryBuilderController::class, 'statistikProdi' ]);
+Route::get('/statistik-prodi', [ QueryBuilderController::class, 'statistikProdi' ])->name('statistik-prodi');
 
 //cuman buat belajar
 /* |-------------------------------------------------------------------------- | INSERT |-------------------------------------------------------------------------- */

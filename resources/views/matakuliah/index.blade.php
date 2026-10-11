@@ -16,9 +16,6 @@
                 <th>Semester</th>
                 <th>Dosen Pengampu</th>
                 <th>Prodi</th>
-                <th>Detail</th>
-                <th>Update</th>
-                <th>Delete</th>
             </tr>
         </thead>
 
