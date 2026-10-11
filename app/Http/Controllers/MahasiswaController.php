@@ -16,7 +16,7 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::with('prodi')
             ->orderBy('nama')
-            ->get();
+            ->paginate(25);
 
         return view('mahasiswa.index', compact('mahasiswa'));
     }
