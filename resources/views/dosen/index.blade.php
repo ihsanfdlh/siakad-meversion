@@ -1,68 +1,89 @@
 @extends('layouts.header')
-@section('title', 'DOSEN')
+@section('title', 'Daftar Dosen')
 
 @section('content')
 <div class="section-heading">
     <div>
-        <span class="eyebrow">DATA AKADEMIK</span>
-        <h1>Daftar Dosen</h1>
-        <p>Kelola informasi dosen yang terdaftar di sistem.</p>
+        <span class="eyebrow"><i class="fa-solid fa-chalkboard-user"></i> DATA AKADEMIK</span>
+        <h1>Daftar Dosen Pengajar</h1>
+        <p>Kelola data pendidik, Nomor Induk Pegawai (NIP), dan kontak dosen di lingkungan kampus.</p>
     </div>
-    <a class="button button-primary" href="{{ route('dosen.create') }}">+ Tambah Dosen</a>
+    <a class="button button-primary" href="{{ route('dosen.create') }}">
+        <i class="fa-solid fa-plus"></i>
+        <span>Tambah Dosen</span>
+    </a>
 </div>
+
 @if (session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
+    <div class="alert alert-success">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>{{ session('success') }}</span>
+    </div>
 @endif
+
 <div class="table-card">
-    <div class="table-top"><strong>Data Dosen</strong><span class="record-count">{{ $dosen->total() }} data</span></div>
+    <div class="table-top">
+        <strong>Data Dosen Terdaftar</strong>
+        <span class="record-count"><i class="fa-solid fa-database"></i> {{ $dosen->total() }} Dosen</span>
+    </div>
+
     <div class="table-scroll">
         <table>
             <thead>
                 <tr>
-                    <th>No</th>
+                    <th style="width: 60px;">No</th>
                     <th>NIP</th>
-                    <th>Nama</th>
-                    <th>No Telepone</th>
+                    <th>Nama Dosen</th>
+                    <th>No. Telepon</th>
+                    <th style="text-align: right; width: 230px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-            @forelse ($dosen as $dsn)
-                <tr>
-                    <td class="muted">{{ $dosen->firstItem() + $loop->index }}</td>
-                    <td><span class="code-pill">{{ $dsn->nip }}</span></td>
-                    <td><strong>{{ $dsn->nama }}</strong></td>
-                    <td>{{ $dsn->no_telp }}</td>
-                    <td>
-                        <span class="code-pill"">
-                            <a href="{{ route('dosen.show', $dsn->id) }}" style="text-decoration: none;">Lihat Detail</a>
-                        </span>
-                    </td>
-                    <td>
-                        <a href="{{ route('dosen.edit', $dsn->id) }}" class="status-pill" style="text-decoration: none">Edit</a>
-                    </td>
-                    <td>
-                        <form action="{{ route('dosen.destroy', $dsn->id) }}"
-                            method="POST"
-                            onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-
-                            @csrf
-                            @method('DELETE')
-
-                            <button  class="code-pill" type="submit" style="border: none; cursor:pointer; background-color: #ffebed; color: #ff263b">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @empty
-                <tr><td class="empty-state" colspan="11"><strong>Belum ada data mahasiswa</strong><span>Tambahkan mahasiswa pertama untuk mulai mengelola data.</span></td></tr>
-            @endforelse
+                @forelse ($dosen as $dsn)
+                    <tr>
+                        <td class="muted">{{ $dosen->firstItem() + $loop->index }}</td>
+                        <td><span class="code-pill">{{ $dsn->nip }}</span></td>
+                        <td><strong>{{ $dsn->nama }}</strong></td>
+                        <td>{{ $dsn->no_telp ?? '-' }}</td>
+                        <td style="text-align: right;">
+                            <div class="action-group" style="justify-content: flex-end;">
+                                <a href="{{ route('dosen.show', $dsn->id) }}" class="btn-action btn-action-view" title="Detail Dosen">
+                                    <i class="fa-solid fa-eye"></i> Detail
+                                </a>
+                                <a href="{{ route('dosen.edit', $dsn->id) }}" class="btn-action btn-action-edit" title="Edit Dosen">
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                                </a>
+                                <form action="{{ route('dosen.destroy', $dsn->id) }}"
+                                    method="POST"
+                                    onsubmit="return confirm('Yakin ingin menghapus dosen {{ $dsn->nama }}?')"
+                                    style="display: inline-block; margin: 0;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn-action btn-action-delete" type="submit" title="Hapus Dosen">
+                                        <i class="fa-solid fa-trash-can"></i> Hapus
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td class="empty-state" colspan="5">
+                            <i class="fa-solid fa-inbox" style="font-size: 38px; color: var(--text-tertiary); margin-bottom: 12px; display: block;"></i>
+                            <strong>Belum ada data dosen</strong>
+                            <span>Tambahkan data dosen pengajar untuk mulai mengelola informasi pengampu mata kuliah.</span>
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
+
     <div class="pagination-wrapper">
         <p class="pagination-summary">
             Menampilkan {{ $dosen->firstItem() ?? 0 }}
             sampai {{ $dosen->lastItem() ?? 0 }} dari
-            <strong>{{ $dosen->total() }}</strong> data
+            <strong>{{ $dosen->total() }}</strong> dosen
         </p>
 
         @if ($dosen->hasPages())
@@ -73,7 +94,7 @@
                 $endPage = min($lastPage, $currentPage + 1);
             @endphp
 
-            <nav class="pagination-nav" aria-label="Navigasi halaman mahasiswa">
+            <nav class="pagination-nav" aria-label="Navigasi halaman dosen">
                 @if ($dosen->onFirstPage())
                     <span class="pagination-control is-disabled" aria-disabled="true" aria-label="Halaman sebelumnya">
                         &lsaquo;

@@ -3,45 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f2f5ff">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>Masuk | Sistem Informasi Akademik</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+
+    <!-- Anti-flicker Theme Script -->
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('siakad-theme');
+                const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const activeTheme = savedTheme ? savedTheme : (systemPrefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', activeTheme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <style>
         .login-page {
             align-items: center;
             background:
-                radial-gradient(ellipse at 12% 12%, rgba(83, 111, 229, .1), transparent 28rem),
-                radial-gradient(ellipse at 92% 88%, rgba(83, 111, 229, .08), transparent 25rem),
-                #f5f7fc;
+                radial-gradient(ellipse at 12% 12%, rgba(83, 111, 229, .12), transparent 28rem),
+                radial-gradient(ellipse at 92% 88%, rgba(6, 182, 212, .1), transparent 25rem),
+                var(--bg-body);
             display: grid;
             min-height: 100vh;
             min-height: 100svh;
             overflow: hidden;
             padding: 36px 22px;
             position: relative;
+            transition: background 0.25s ease;
+        }
+
+        .login-topbar {
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            right: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .login-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .login-back-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary-border);
+            transform: translateX(-2px);
         }
 
         .login-layout {
-            background: #fff;
-            border: 1px solid rgba(224, 229, 241, .9);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
             border-radius: 24px;
-            box-shadow: 0 28px 80px rgba(34, 48, 91, .12);
+            box-shadow: var(--shadow-xl);
             display: grid;
             grid-template-columns: minmax(0, 1.05fr) minmax(390px, .95fr);
-            margin: 0 auto;
+            margin: 40px auto 0;
             max-width: 1060px;
             overflow: hidden;
             position: relative;
             width: 100%;
+            transition: background 0.25s ease, border-color 0.25s ease;
         }
 
         .login-aside {
-            background: linear-gradient(145deg, #314bbd 0%, #3958d8 54%, #5972e4 100%);
+            background: var(--primary-gradient);
             color: #fff;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 620px;
+            min-height: 600px;
             overflow: hidden;
             padding: clamp(34px, 5vw, 62px);
             position: relative;
@@ -49,7 +100,7 @@
 
         .login-aside::before,
         .login-aside::after {
-            border: 1px solid rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .15);
             border-radius: 50%;
             content: "";
             pointer-events: none;
@@ -85,13 +136,13 @@
 
         .login-brand-mark {
             align-items: center;
-            background: rgba(255, 255, 255, .16);
-            border: 1px solid rgba(255, 255, 255, .24);
+            background: rgba(255, 255, 255, .2);
+            border: 1px solid rgba(255, 255, 255, .3);
             border-radius: 12px;
             color: #fff;
             display: flex;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 800;
             height: 44px;
             justify-content: center;
@@ -101,127 +152,86 @@
         .login-brand-name {
             color: #fff;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             letter-spacing: .1px;
         }
 
         .login-brand-caption {
-            color: rgba(255, 255, 255, .72);
+            color: rgba(255, 255, 255, .8);
             display: block;
-            font-size: 10px;
+            font-size: 11px;
             margin-top: 2px;
         }
 
         .login-aside-copy {
-            margin: 56px 0;
+            margin: 50px 0;
             max-width: 410px;
         }
 
         .login-kicker {
             align-items: center;
-            background: rgba(255, 255, 255, .12);
-            border: 1px solid rgba(255, 255, 255, .17);
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .22);
             border-radius: 30px;
-            color: rgba(255, 255, 255, .92);
+            color: #ffffff;
             display: inline-flex;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
             gap: 8px;
             letter-spacing: 1.15px;
-            margin-bottom: 22px;
-            padding: 8px 12px;
+            margin-bottom: 20px;
+            padding: 7px 14px;
             text-transform: uppercase;
-        }
-
-        .login-kicker::before {
-            background: #a8f0cb;
-            border-radius: 50%;
-            content: "";
-            height: 7px;
-            width: 7px;
         }
 
         .login-aside h1 {
             color: #fff;
-            font-size: clamp(32px, 4vw, 44px);
-            letter-spacing: -1.5px;
-            line-height: 1.12;
-            margin-bottom: 17px;
-            max-width: 390px;
+            font-size: clamp(30px, 3.2vw, 40px);
+            line-height: 1.2;
+            margin-bottom: 16px;
         }
 
         .login-aside-copy p {
-            color: rgba(255, 255, 255, .78);
-            font-size: 14px;
-            line-height: 1.8;
-            max-width: 370px;
+            color: rgba(255, 255, 255, .88);
+            font-size: 14.5px;
+            line-height: 1.7;
         }
 
         .login-aside-note {
             align-items: center;
-            background: rgba(255, 255, 255, .11);
+            background: rgba(255, 255, 255, .12);
             border: 1px solid rgba(255, 255, 255, .18);
-            border-radius: 13px;
-            color: rgba(255, 255, 255, .88);
+            border-radius: 14px;
             display: flex;
-            font-size: 11px;
             gap: 12px;
-            line-height: 1.6;
-            max-width: 355px;
-            padding: 14px 16px;
-        }
-
-        .login-aside-note span:first-child {
-            align-items: center;
-            background: rgba(255, 255, 255, .16);
-            border-radius: 9px;
-            color: #fff;
-            display: flex;
-            flex: 0 0 34px;
-            font-size: 16px;
-            height: 34px;
-            justify-content: center;
+            padding: 14px 18px;
+            font-size: 12.5px;
+            color: rgba(255, 255, 255, .92);
         }
 
         .login-content {
-            align-items: center;
+            background: var(--bg-surface);
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            padding: clamp(34px, 5vw, 62px);
-        }
-
-        .login-content-inner {
-            max-width: 370px;
-            width: 100%;
-        }
-
-        .login-content .eyebrow {
-            margin-bottom: 10px;
+            padding: clamp(34px, 5vw, 56px);
         }
 
         .login-heading {
-            color: #172033;
-            font-size: clamp(27px, 3vw, 32px);
-            letter-spacing: -1px;
-            margin-bottom: 9px;
+            font-size: clamp(26px, 3vw, 32px);
+            margin-bottom: 8px;
         }
 
         .login-subheading {
-            font-size: 13px;
-            line-height: 1.7;
-            margin-bottom: 30px;
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 28px;
         }
 
         .login-form {
             display: grid;
-            gap: 19px;
-        }
-
-        .login-form .field label {
-            color: #3d4960;
-            font-size: 12px;
-            margin-bottom: 8px;
+            gap: 20px;
         }
 
         .login-input-wrap {
@@ -229,206 +239,153 @@
         }
 
         .login-form .field input {
-            background: #fbfcff;
-            border-color: #dfe4ef;
-            border-radius: 9px;
-            font-size: 13px;
-            min-height: 47px;
-            padding: 12px 14px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 11px;
+            color: var(--text-primary);
+            font-size: 14px;
+            min-height: 48px;
+            padding: 12px 15px;
+            width: 100%;
+            outline: none;
+            transition: all 0.2s ease;
         }
 
         .login-form .field input:focus {
-            border-color: #6b83e7;
-            box-shadow: 0 0 0 3px rgba(57, 88, 216, .11);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--border-focus);
         }
 
         .login-form .password-input {
-            padding-right: 90px;
+            padding-right: 100px;
         }
 
         .password-toggle {
-            background: transparent;
-            border: 0;
-            border-radius: 6px;
-            color: #5268c4;
+            background: var(--bg-surface-soft);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
             cursor: pointer;
-            font: inherit;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 6px 7px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
             position: absolute;
-            right: 9px;
+            right: 8px;
             top: 50%;
             transform: translateY(-50%);
+            transition: all 0.2s ease;
         }
 
         .password-toggle:hover {
-            background: #eef2ff;
-            color: #2844bb;
-        }
-
-        .login-error {
-            background: #fff3f3;
-            border: 1px solid #f2cccc;
-            border-radius: 9px;
-            color: #a92f38;
-            font-size: 12px;
-            line-height: 1.6;
-            padding: 11px 13px;
+            background: var(--primary-light);
+            color: var(--primary);
         }
 
         .login-submit {
-            justify-content: space-between;
-            margin-top: 2px;
-            min-height: 48px;
-            padding: 12px 16px;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 6px;
+            min-height: 50px;
             width: 100%;
         }
 
-        .login-submit-arrow {
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 1;
-            transition: transform .2s ease;
-        }
-
-        .login-submit:hover .login-submit-arrow {
-            transform: translateX(3px);
-        }
-
         .login-helper {
-            border-top: 1px solid #edf0f5;
-            color: #858fa2;
-            font-size: 11px;
-            line-height: 1.7;
-            margin-top: 22px;
-            padding-top: 17px;
-        }
-
-        .login-footer {
-            color: #9aa3b3;
-            font-size: 10px;
-            margin-top: 35px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-tertiary);
+            font-size: 12px;
+            margin-top: 24px;
+            padding-top: 18px;
             text-align: center;
         }
 
-        .login-page :focus-visible {
-            outline: 3px solid rgba(57, 88, 216, .38);
-            outline-offset: 3px;
+        .login-footer {
+            color: var(--text-tertiary);
+            font-size: 12px;
+            margin-top: 18px;
+            text-align: center;
         }
 
-        @media (max-width: 780px) {
+        @media (max-width: 860px) {
             .login-layout {
                 grid-template-columns: 1fr;
-                max-width: 520px;
+                margin-top: 60px;
+                max-width: 500px;
             }
 
             .login-aside {
-                min-height: 0;
-                padding: 32px;
+                min-height: auto;
+                padding: 34px 28px;
             }
 
             .login-aside-copy {
-                margin: 38px 0 29px;
-            }
-
-            .login-aside h1 {
-                font-size: 34px;
-            }
-
-            .login-content {
-                padding: 38px 32px;
-            }
-
-            .login-footer {
-                margin-top: 24px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .login-page {
-                padding: 0;
-            }
-
-            .login-layout {
-                border: 0;
-                border-radius: 0;
-                min-height: 100vh;
-                min-height: 100svh;
-            }
-
-            .login-aside {
-                padding: 26px 23px 24px;
-            }
-
-            .login-aside-copy {
-                margin: 30px 0 0;
-            }
-
-            .login-aside h1 {
-                font-size: 30px;
-            }
-
-            .login-aside-copy p {
-                font-size: 12px;
-            }
-
-            .login-aside-note {
-                display: none;
-            }
-
-            .login-content {
-                align-items: flex-start;
-                padding: 30px 23px;
-            }
-
-            .login-subheading {
-                margin-bottom: 24px;
+                margin: 28px 0;
             }
         }
     </style>
 </head>
+
 <body>
     <main class="login-page">
+        <!-- Topbar with Back button and Theme toggle -->
+        <div class="login-topbar">
+            <a href="{{ url('/') }}" class="login-back-btn" title="Kembali ke Beranda">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Kembali ke Beranda</span>
+            </a>
+
+            <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Ganti mode tampilan" title="Ganti mode tema">
+                <span class="theme-toggle-track">
+                    <span class="theme-toggle-thumb">
+                        <i class="fa-solid fa-sun icon-sun" aria-hidden="true"></i>
+                        <i class="fa-solid fa-moon icon-moon" aria-hidden="true"></i>
+                    </span>
+                </span>
+                <span class="theme-toggle-text" id="theme-toggle-text">Mode</span>
+            </button>
+        </div>
+
         <div class="login-layout">
+            <!-- Aside section -->
             <section class="login-aside" aria-label="Tentang sistem akademik">
                 <div class="login-brand">
                     <span class="login-brand-mark" aria-hidden="true">S</span>
                     <div>
                         <span class="login-brand-name">Sistem Informasi Akademik</span>
-                        <span class="login-brand-caption">Portal layanan akademik</span>
+                        <span class="login-brand-caption">Portal Layanan Akademik Resmi</span>
                     </div>
                 </div>
 
                 <div class="login-aside-copy">
-                    <span class="login-kicker">Ruang akademik Anda</span>
-                    <h1>Belajar dan bertumbuh, dimulai dari sini.</h1>
-                    <p>Masuk ke akun Anda untuk melanjutkan aktivitas di Sistem Informasi Akademik dengan nyaman dan teratur.</p>
+                    <span class="login-kicker"><i class="fa-solid fa-shield-halved"></i> Portal Terverifikasi</span>
+                    <h1>Akses cepat & teratur ke seluruh data kampus.</h1>
+                    <p>Masuk ke akun Anda untuk mengelola informasi mahasiswa, pengajar, kurikulum, serta fasilitas ruang perkuliahan.</p>
                 </div>
 
                 <div class="login-aside-note">
-                    <span aria-hidden="true">✦</span>
-                    <span>Gunakan akun akademik yang terdaftar untuk mengakses portal.</span>
+                    <i class="fa-solid fa-circle-info" style="font-size: 16px;"></i>
+                    <span>Gunakan kredensial resmi akademik yang telah terdaftar untuk masuk.</span>
                 </div>
             </section>
 
+            <!-- Form section -->
             <section class="login-content" aria-labelledby="login-heading">
                 <div class="login-content-inner">
-                    <span class="eyebrow">SELAMAT DATANG KEMBALI</span>
-                    <h2 class="login-heading" id="login-heading">Masuk ke akun</h2>
-                    <p class="login-subheading">Masukkan email dan password untuk melanjutkan.</p>
+                    <span class="eyebrow"><i class="fa-solid fa-lock"></i> AUTENTIKASI PENGGUNA</span>
+                    <h2 class="login-heading" id="login-heading">Masuk ke SIAKAD</h2>
+                    <p class="login-subheading">Masukkan email dan kata sandi akun Anda untuk melanjutkan.</p>
 
                     <form action="{{ route('login.process') }}" method="POST" class="login-form">
                         @csrf
 
                         @if ($errors->any())
-                            <div class="login-error" role="alert" aria-live="assertive">
-                                {{ $errors->first() }}
+                            <div class="alert alert-error" role="alert" style="margin-bottom: 0;">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                <span>{{ $errors->first() }}</span>
                             </div>
                         @endif
 
                         <div class="field">
-                            <label for="email">Email</label>
+                            <label for="email">Alamat Email</label>
                             <div class="login-input-wrap">
                                 <input
                                     id="email"
@@ -451,7 +408,7 @@
                                     id="password"
                                     type="password"
                                     name="password"
-                                    placeholder="Masukkan password"
+                                    placeholder="Masukkan kata sandi"
                                     autocomplete="current-password"
                                     required
                                 >
@@ -462,34 +419,68 @@
                                     aria-controls="password"
                                     aria-label="Tampilkan password"
                                     aria-pressed="false"
-                                >Tampilkan</button>
+                                >
+                                    <i class="fa-regular fa-eye" id="toggle-eye-icon"></i>
+                                    <span id="toggle-label">Lihat</span>
+                                </button>
                             </div>
                         </div>
 
                         <button class="button button-primary login-submit" type="submit">
-                            <span>Masuk ke portal</span>
-                            <span class="login-submit-arrow" aria-hidden="true">→</span>
+                            <span>Masuk ke Portal</span>
+                            <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </form>
 
-                    <p class="login-helper">Pastikan email dan password sudah benar sebelum masuk.</p>
-                    <p class="login-footer">&copy; {{ date('Y') }} Sistem Informasi Akademik</p>
+                    <p class="login-helper">Pastikan alamat email dan password Anda sesuai sebelum mengirimkan formulir.</p>
+                    <p class="login-footer">&copy; {{ date('Y') }} <strong>SIAKAD</strong> &mdash; Sistem Informasi Akademik</p>
                 </div>
             </section>
         </div>
     </main>
 
     <script>
-        const passwordInput = document.getElementById('password');
-        const passwordToggle = document.getElementById('toggle-password');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Password Visibility Toggle
+            const passwordInput = document.getElementById('password');
+            const passwordToggle = document.getElementById('toggle-password');
+            const toggleEyeIcon = document.getElementById('toggle-eye-icon');
+            const toggleLabel = document.getElementById('toggle-label');
 
-        passwordToggle.addEventListener('click', () => {
-            const isPasswordVisible = passwordInput.type === 'password';
+            if (passwordToggle && passwordInput) {
+                passwordToggle.addEventListener('click', () => {
+                    const isVisible = passwordInput.type === 'text';
+                    passwordInput.type = isVisible ? 'password' : 'text';
+                    toggleLabel.textContent = isVisible ? 'Lihat' : 'Tutup';
+                    toggleEyeIcon.className = isVisible ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash';
+                    passwordToggle.setAttribute('aria-pressed', String(!isVisible));
+                });
+            }
 
-            passwordInput.type = isPasswordVisible ? 'text' : 'password';
-            passwordToggle.textContent = isPasswordVisible ? 'Sembunyikan' : 'Tampilkan';
-            passwordToggle.setAttribute('aria-label', isPasswordVisible ? 'Sembunyikan password' : 'Tampilkan password');
-            passwordToggle.setAttribute('aria-pressed', String(isPasswordVisible));
+            // Theme Toggle
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleText = document.getElementById('theme-toggle-text');
+
+            function updateThemeText(theme) {
+                if (themeToggleText) {
+                    themeToggleText.textContent = theme === 'dark' ? 'Gelap' : 'Terang';
+                }
+            }
+
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            updateThemeText(currentTheme);
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    const current = document.documentElement.getAttribute('data-theme') || 'light';
+                    const next = current === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-theme', next);
+                    try {
+                        localStorage.setItem('siakad-theme', next);
+                    } catch (e) {}
+                    updateThemeText(next);
+                });
+            }
         });
     </script>
 </body>

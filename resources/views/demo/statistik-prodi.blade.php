@@ -1,46 +1,66 @@
 @extends('layouts.header')
 
-@section('title', 'Statistik Prodi')
+@section('title', 'Statistik Program Studi')
 
 @section('content')
-<body>
-    <div class="section-heading">
-        <div>
-            <a class="back-link" href="{{ route('prodi.index') }}">&larr; Kembali ke program studi</a>
-            <span class="eyebrow">DATA AKADEMIK</span>
-            <h1>Statistik Program Studi</h1>
-            <p>Statistik Program Studi berdasarkan jumlah mahasiswa.</p>
-        </div>
-        <a class="button button-primary" href="{{ route('matakuliah.create') }}">+ Tambah Mata Kuliah</a>
+<div class="section-heading">
+    <div>
+        <a class="back-link" href="{{ route('prodi.index') }}">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Kembali ke Program Studi</span>
+        </a>
+        <span class="eyebrow"><i class="fa-solid fa-chart-pie"></i> STATISTIK AKADEMIK</span>
+        <h1>Statistik Program Studi</h1>
+        <p>Distribusi jumlah mahasiswa terdaftar pada masing-masing program studi.</p>
     </div>
-    @if (session('pesan'))<div class="alert alert-success">{{ session('pesan') }}</div>@endif
-    <div class="table-card">
-        <div class="table-scroll">
-            <table>
-                <thead>
+</div>
+
+@if (session('pesan'))
+    <div class="alert alert-success">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>{{ session('pesan') }}</span>
+    </div>
+@endif
+
+<div class="table-card">
+    <div class="table-top">
+        <strong>Rekapitulasi Mahasiswa per Prodi</strong>
+        <span class="record-count"><i class="fa-solid fa-layer-group"></i> {{ count($rekap) }} Prodi</span>
+    </div>
+
+    <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 70px;">No</th>
+                    <th>Program Studi</th>
+                    <th style="width: 140px;">Jenjang</th>
+                    <th style="width: 200px;">Jumlah Mahasiswa</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($rekap as $index => $item)
                     <tr>
-                        <th>No</th>
-                        <th>Program Studi</th>
-                        <th>Jenjang</th>
-                        <th>Jumlah Mahasiswa</th>
+                        <td class="muted">{{ $index + 1 }}</td>
+                        <td><strong>{{ $item->nama }}</strong></td>
+                        <td><span class="code-pill">{{ $item->jenjang }}</span></td>
+                        <td>
+                            <span class="status-pill">
+                                <i class="fa-solid fa-user-graduate"></i> {{ $item->jumlah }} Orang
+                            </span>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @forelse ($rekap as $index => $item)
-                        <tr>
-                            <td>{{ $index + 1 }}</td>
-                            <td>{{ $item->nama }}</td>
-                            <td>{{ $item->jenjang }}</td>
-                            <td>{{ $item->jumlah }} Orang</td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="4">Data tidak ditemukan.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
+                @empty
+                    <tr>
+                        <td class="empty-state" colspan="4">
+                            <i class="fa-solid fa-inbox" style="font-size: 38px; color: var(--text-tertiary); margin-bottom: 12px; display: block;"></i>
+                            <strong>Data tidak ditemukan</strong>
+                            <span>Belum ada data mahasiswa untuk direkap.</span>
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-</body>
+</div>
 @endsection

@@ -1,40 +1,42 @@
 @extends('layouts.header')
-@section('title', 'MAHASISWA')
+@section('title', 'Daftar Mahasiswa')
 
 @section('content')
 <div class="section-heading">
     <div>
-        <span class="eyebrow">DATA AKADEMIK</span>
+        <span class="eyebrow"><i class="fa-solid fa-user-graduate"></i> DATA AKADEMIK</span>
         <h1>Daftar Mahasiswa</h1>
-        <p>Kelola informasi mahasiswa yang terdaftar di sistem.</p>
+        <p>Kelola data identitas, semester, dan program studi mahasiswa aktif yang terdaftar di sistem.</p>
     </div>
     <a class="button button-primary" href="{{ route('mahasiswa.create') }}">
-        + Tambah Mahasiswa
+        <i class="fa-solid fa-plus"></i>
+        <span>Tambah Mahasiswa</span>
     </a>
 </div>
 
 @if (session('success'))
     <div class="alert alert-success">
-        {{ session('success') }}
+        <i class="fa-solid fa-circle-check"></i>
+        <span>{{ session('success') }}</span>
     </div>
 @endif
 
 <div class="table-card">
     <div class="table-top">
-        <strong>Data mahasiswa</strong>
-        <span class="record-count">{{ $mahasiswa->total() }} data</span>
+        <strong>Data Mahasiswa Terdaftar</strong>
+        <span class="record-count"><i class="fa-solid fa-database"></i> {{ $mahasiswa->total() }} Mahasiswa</span>
     </div>
 
     <div class="table-scroll">
         <table>
             <thead>
                 <tr>
-                    <th>No</th>
+                    <th style="width: 60px;">No</th>
                     <th>NIM</th>
-                    <th>Nama</th>
+                    <th>Nama Mahasiswa</th>
                     <th>Semester</th>
-                    <th>Prodi</th>
-                    <th>Detail</th>
+                    <th>Program Studi</th>
+                    <th style="text-align: right; width: 230px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,46 +45,47 @@
                         <td class="muted">{{ $mahasiswa->firstItem() + $loop->index }}</td>
                         <td><span class="code-pill">{{ $mhs->nim }}</span></td>
                         <td><strong>{{ $mhs->nama }}</strong></td>
-                        <td><span class="status-pill">{{ $mhs->semester }}</span></td>
+                        <td><span class="status-pill">Semester {{ $mhs->semester }}</span></td>
                         <td>{{ $mhs->prodi->nama ?? '-' }}</td>
-                        <td>
-                            <span class="code-pill">
-                                <a href="{{ route('mahasiswa.show', $mhs->id_mahasiswa) }}" style="text-decoration: none;">Lihat Detail</a>
-                            </span>
-                        </td>
-                        <td>
-                            <a href="{{ route('mahasiswa.edit', $mhs->id_mahasiswa) }}" class="status-pill" style="text-decoration: none;">Edit</a>
-                        </td>
-                        <td>
-                            <form action="{{ route('mahasiswa.destroy', $mhs->id_mahasiswa) }}"
-                                method="POST"
-                                onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-
-                                @csrf
-                                @method('DELETE')
-
-                                <button  class="code-pill" type="submit" style="border: none; cursor:pointer; background-color: #ffebed; color: #ff263b">Delete</button>
-                            </form>
+                        <td style="text-align: right;">
+                            <div class="action-group" style="justify-content: flex-end;">
+                                <a href="{{ route('mahasiswa.show', $mhs->id_mahasiswa) }}" class="btn-action btn-action-view" title="Lihat Biodata">
+                                    <i class="fa-solid fa-eye"></i> Detail
+                                </a>
+                                <a href="{{ route('mahasiswa.edit', $mhs->id_mahasiswa) }}" class="btn-action btn-action-edit" title="Ubah Data">
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                                </a>
+                                <form action="{{ route('mahasiswa.destroy', $mhs->id_mahasiswa) }}"
+                                    method="POST"
+                                    onsubmit="return confirm('Yakin ingin menghapus data {{ $mhs->nama }}?')"
+                                    style="display: inline-block; margin: 0;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn-action btn-action-delete" type="submit" title="Hapus Data">
+                                        <i class="fa-solid fa-trash-can"></i> Hapus
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td class="empty-state" colspan="9">
+                        <td class="empty-state" colspan="6">
+                            <i class="fa-solid fa-inbox" style="font-size: 38px; color: var(--text-tertiary); margin-bottom: 12px; display: block;"></i>
                             <strong>Belum ada data mahasiswa</strong>
-                            <span>
-                                Tambahkan mahasiswa pertama untuk mulai mengelola data.
-                            </span>
+                            <span>Tambahkan data mahasiswa baru untuk mulai mengelola informasi akademik.</span>
                         </td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
     </div>
+
     <div class="pagination-wrapper">
         <p class="pagination-summary">
             Menampilkan {{ $mahasiswa->firstItem() ?? 0 }}
             sampai {{ $mahasiswa->lastItem() ?? 0 }} dari
-            <strong>{{ $mahasiswa->total() }}</strong> data
+            <strong>{{ $mahasiswa->total() }}</strong> mahasiswa
         </p>
 
         @if ($mahasiswa->hasPages())
