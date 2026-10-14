@@ -27,15 +27,12 @@
             <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px;">
                 <span class="status-pill">Semester {{ $kelas->semester ?? 'Belum ditentukan' }}</span>
                 <span class="code-pill"> {{ $kelas->prodi->nama ?? 'Belum ditentukan' }}</span>
+                <span class="status-pill">{{ $kelas->mahasiswa->count() }} Mahasiswa</span>
             </div>
         </div>
     </div>
 </div>
 <div class="table-card">
-    <div class="table-top">
-        <strong>Mahasiswa dalam Kelas Ini</strong>
-        <span class="record-count"><i class="fa-solid fa-layer-group"></i> {{ $kelas->mahasiswa->count() }} Mahasiswa</span>
-    </div>
     <div class="table-scroll">
         <table>
             <thead>

@@ -195,7 +195,21 @@
                 @endforeach
             </select>
         </div>
+        <div class="field">
+            <label for="id_kelas">Kelas</label>
+            <select id="id_kelas" name="id_kelas" required>
+                <option value="">-- Pilih Kelas --</option>
 
+                @foreach ($kelas as $kls)
+                    <option
+                        value="{{ $kls->id_kelas }}"
+                        {{ old('id_kelas') == $kls->id_kelas ? 'selected' : '' }}
+                    >
+                        {{ collect(preg_split('/\s+/', trim($kls->prodi->nama)))->map(fn($kata) => strtoupper(substr($kata, 0, 1)))->implode('') }}-{{ $kls->semester }}{{ $kls->nama_kelas }} ({{ $kls->prodi->nama }})
+                    </option>
+                @endforeach
+            </select>
+        </div>
     </div>
 
     <div class="form-actions">

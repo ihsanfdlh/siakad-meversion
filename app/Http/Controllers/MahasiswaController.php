@@ -39,6 +39,7 @@ class MahasiswaController extends Controller
             'angkatan' => 'required|integer',
             'semester' => 'required|integer',
             'id_prodi' => 'required|exists:prodis,id',
+            'id_kelas' => 'required|exists:kelas,id_kelas',
         ]);
 
         Mahasiswa::create([
@@ -54,6 +55,7 @@ class MahasiswaController extends Controller
             'angkatan' => $request->angkatan,
             'semester' => $request->semester,
             'id_prodi' => $request->id_prodi,
+            'id_kelas' => $request->id_kelas,
         ]);
 
         return redirect()
@@ -69,8 +71,8 @@ class MahasiswaController extends Controller
     public function edit(Mahasiswa $mahasiswa)
     {
         $prodi = Prodi::all();
-
-        return view('mahasiswa.edit', compact('mahasiswa','prodi'));
+        $kelas = Kelas::get();
+        return view('mahasiswa.edit', compact('mahasiswa','prodi', 'kelas'));
     }
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
@@ -87,6 +89,7 @@ class MahasiswaController extends Controller
             'angkatan' => 'required|integer',
             'semester' => 'required|integer',
             'id_prodi' => 'required|exists:prodis,id',
+            'id_kelas' => 'required|exists:kelas,id_kelas',
         ]);
 
         $mahasiswa->update([
@@ -102,6 +105,7 @@ class MahasiswaController extends Controller
             'angkatan' => $request->angkatan,
             'semester' => $request->semester,
             'id_prodi' => $request->id_prodi,
+            'id_kelas' => $request->id_kelas,
         ]);
 
         return redirect()

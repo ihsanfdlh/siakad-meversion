@@ -26,6 +26,7 @@ class Mahasiswa extends Model
         'angkatan',
         'semester',
         'id_prodi',
+        'id_kelas',
     ];
     public function prodi(): BelongsTo { return $this->belongsTo( Prodi::class, 'id_prodi', 'id' ); }
     public function nilai(): HasMany { return $this->hasMany( NilaiMatakuliah::class, 'mahasiswa_id', 'id_mahasiswa' ); }
