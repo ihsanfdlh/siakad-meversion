@@ -31,7 +31,22 @@
     @csrf
 
     <div class="form-grid">
+        <div class="field">
+            <label for="id_prodi">Program Studi</label>
 
+            <select id="id_prodi" name="id_prodi" required>
+                <option value="">-- Pilih Program Studi --</option>
+
+                @foreach ($prodi as $item)
+                    <option
+                        value="{{ $item->id }}"
+                        {{ old('id_prodi') == $item->id ? 'selected' : '' }}
+                    >
+                        {{ $item->nama }} ({{ $item->jenjang }})
+                    </option>
+                @endforeach
+            </select>
+        </div>
         <div class="field">
             <label for="nim">Nama Kelas</label>
             <input
@@ -67,23 +82,6 @@
                         Semester {{ $i }}
                     </option>
                 @endfor
-            </select>
-        </div>
-
-        <div class="field">
-            <label for="id_prodi">Program Studi</label>
-
-            <select id="id_prodi" name="id_prodi" required>
-                <option value="">-- Pilih Program Studi --</option>
-
-                @foreach ($prodi as $item)
-                    <option
-                        value="{{ $item->id }}"
-                        {{ old('id_prodi') == $item->id ? 'selected' : '' }}
-                    >
-                        {{ $item->nama }} ({{ $item->jenjang }})
-                    </option>
-                @endforeach
             </select>
         </div>
     </div>

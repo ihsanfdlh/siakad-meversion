@@ -293,7 +293,7 @@
 
                 {{-- Akademik Dropdown --}}
                 @php
-                    $isAkademikActive = request()->routeIs('mahasiswa.*') || request()->routeIs('dosen.*');
+                    $isAkademikActive = request()->routeIs('mahasiswa.*') || request()->routeIs('dosen.*') || request()->routeIs('kelas.*');
                 @endphp
                 <div class="nav-item" id="nav-akademik">
                     <button type="button" class="nav-link {{ $isAkademikActive ? 'active' : '' }}" aria-haspopup="true" aria-expanded="false">

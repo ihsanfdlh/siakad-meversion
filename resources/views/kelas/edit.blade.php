@@ -80,7 +80,7 @@
                 @foreach ($prodi as $item)
                     <option
                         value="{{ $item->id }}"
-                        {{ old('id_prodi') == $item->id ? 'selected' : '' }}
+                        {{ old('id_prodi', $kelas->id_prodi) == $item->id ? 'selected' : '' }}
                     >
                         {{ $item->nama }} ({{ $item->jenjang }})
                     </option>
