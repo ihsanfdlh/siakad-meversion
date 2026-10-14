@@ -38,7 +38,7 @@
                     <th>Semester</th>
                     <th>Dosen Pengampu</th>
                     <th>Program Studi</th>
-                    <th style="text-align: right; width: 230px;">Aksi</th>
+                    <th class="action-cell" style="width: 230px;">Aksi</th>
                 </tr>
             </thead>
 
@@ -52,8 +52,8 @@
                         <td><span class="code-pill">Semester {{ $matakuliah->semester }}</span></td>
                         <td>{{ $matakuliah->dosen->nama ?? 'Belum ada dosen' }}</td>
                         <td>{{ $matakuliah->prodi->nama ?? 'Belum ada prodi' }}</td>
-                        <td style="text-align: right;">
-                            <div class="action-group" style="justify-content: flex-end;">
+                        <td class="action-cell">
+                            <div class="action-group">
                                 <a href="{{ route('matakuliah.show', $matakuliah->id) }}" class="btn-action btn-action-view" title="Detail Mata Kuliah">
                                     <i class="fa-solid fa-eye"></i> Detail
                                 </a>

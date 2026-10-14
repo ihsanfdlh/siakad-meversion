@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\MatapelajaranController;
@@ -68,6 +69,13 @@ Route::resource('/prodi', ProdiController::class);
 //data jurusan
 Route::get('/jurusan/statistik', [ JurusanController::class, 'statistik' ])->name('jurusan.statistik');
 Route::resource('/jurusan', JurusanController::class);
+
+// Route::get('/kelas', function () {
+//     return view('kelas.index');
+// });
+
+Route::resource('kelas', KelasController::class)
+    ->parameters(['kelas' => 'kelas']);
 
 //langkah kerja 1.2
 Route::get('/halo', function () {

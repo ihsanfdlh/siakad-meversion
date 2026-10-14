@@ -41,7 +41,7 @@
                     <th>Nama Jurusan</th>
                     <th>Kepala Jurusan (Kajur)</th>
                     <th>Sekretaris Jurusan (Sekjur)</th>
-                    <th style="text-align: right; width: 230px;">Aksi</th>
+                    <th class="action-cell" style="width: 230px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,8 +65,8 @@
                                 <span style="color: var(--text-tertiary); font-style: italic;">Belum ditentukan</span>
                             @endif
                         </td>
-                        <td style="text-align: right;">
-                            <div class="action-group" style="justify-content: flex-end;">
+                        <td class="action-cell">
+                            <div class="action-group">
                                 <a href="{{ route('jurusan.show', $jrsn->id) }}" class="btn-action btn-action-view" title="Detail Jurusan">
                                     <i class="fa-solid fa-eye"></i> Detail
                                 </a>

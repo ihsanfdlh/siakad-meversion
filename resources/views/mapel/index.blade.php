@@ -31,7 +31,7 @@
                     <th>Kode</th>
                     <th>Nama Mata Pelajaran</th>
                     <th>Bobot SKS</th>
-                    <th style="text-align: right; width: 140px;">Aksi</th>
+                    <th class="action-cell" style="width: 140px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,10 +47,12 @@
                                 <span class="code-pill">{{ $item->sks }} SKS (Kecil)</span>
                             @endif
                         </td>
-                        <td style="text-align: right;">
-                            <a href="{{ route('akademik.mapel.show', $item->id) }}" class="btn-action btn-action-view">
-                                <i class="fa-solid fa-eye"></i> Detail
-                            </a>
+                        <td class="action-cell">
+                            <div class="action-group">
+                                <a href="{{ route('akademik.mapel.show', $item->id) }}" class="btn-action btn-action-view">
+                                    <i class="fa-solid fa-eye"></i> Detail
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 @empty

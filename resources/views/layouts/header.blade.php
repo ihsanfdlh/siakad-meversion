@@ -80,7 +80,6 @@
             opacity: 0.6;
         }
 
-        .nav-item:hover .nav-chevron,
         .nav-item.is-open .nav-chevron {
             transform: rotate(180deg);
             opacity: 1;
@@ -134,8 +133,7 @@
             border-bottom: 7px solid var(--bg-surface);
         }
 
-        /* Show dropdown on hover or .is-open */
-        .nav-item:hover .nav-dropdown,
+        /* Show dropdown when its menu is toggled open */
         .nav-item.is-open .nav-dropdown {
             opacity: 1;
             pointer-events: auto;
@@ -224,7 +222,6 @@
             transform: translateX(-10%) translateY(-8px) scale(0.96);
         }
 
-        .nav-item:hover .nav-dropdown.dropdown-wide,
         .nav-item.is-open .nav-dropdown.dropdown-wide {
             transform: translateX(-10%) translateY(0) scale(1);
         }
@@ -321,6 +318,14 @@
                                 <span class="dropdown-link-text">
                                     Dosen
                                     <small>Data tenaga pengajar</small>
+                                </span>
+                            </a>
+                            <a class="dropdown-link {{ request()->routeIs('kelas.*') ? 'active' : '' }}"
+                               href="{{ route('kelas.index') }}" role="menuitem">
+                                <span class="dropdown-link-icon"><i class="fa-solid fa-chalkboard"></i></span>
+                                <span class="dropdown-link-text">
+                                    Kelas
+                                    <small>Data kelas pelajaran</small>
                                 </span>
                             </a>
                         </div>
@@ -482,7 +487,6 @@
 
             /* ── Dropdown Submenus ───────────────────────────── */
             const navItems = document.querySelectorAll('.nav-item');
-            const isMobile = () => window.innerWidth <= 860;
 
             navItems.forEach(item => {
                 const trigger  = item.querySelector('button.nav-link');
@@ -490,13 +494,10 @@
 
                 if (!trigger || !dropdown) return;
 
-                // Mobile: toggle on click
-                trigger.addEventListener('click', (e) => {
-                    if (!isMobile()) return;
-                    e.stopPropagation();
+                trigger.addEventListener('click', () => {
                     const isOpen = item.classList.toggle('is-open');
                     trigger.setAttribute('aria-expanded', String(isOpen));
-                    // Close siblings
+
                     navItems.forEach(sibling => {
                         if (sibling !== item) {
                             sibling.classList.remove('is-open');
@@ -504,24 +505,11 @@
                         }
                     });
                 });
-
-                // Desktop: keyboard support (Enter / Space)
-                trigger.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        const isOpen = item.classList.toggle('is-open');
-                        trigger.setAttribute('aria-expanded', String(isOpen));
-                    }
-                    if (e.key === 'Escape') {
-                        item.classList.remove('is-open');
-                        trigger.setAttribute('aria-expanded', 'false');
-                    }
-                });
             });
 
-            // Close all dropdowns when clicking outside
+            // Keep menus open only after a trigger click; any other click closes them.
             document.addEventListener('click', (e) => {
-                if (!e.target.closest('.nav-item')) {
+                if (!e.target.closest('.nav-item > button.nav-link')) {
                     navItems.forEach(item => {
                         item.classList.remove('is-open');
                         item.querySelector('button.nav-link')?.setAttribute('aria-expanded', 'false');

@@ -35,7 +35,7 @@
                     <th>NIP</th>
                     <th>Nama Dosen</th>
                     <th>No. Telepon</th>
-                    <th style="text-align: right; width: 230px;">Aksi</th>
+                    <th class="action-cell" style="width: 230px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,8 +45,8 @@
                         <td><span class="code-pill">{{ $dsn->nip }}</span></td>
                         <td><strong>{{ $dsn->nama }}</strong></td>
                         <td>{{ $dsn->no_telp ?? '-' }}</td>
-                        <td style="text-align: right;">
-                            <div class="action-group" style="justify-content: flex-end;">
+                        <td class="action-cell">
+                            <div class="action-group">
                                 <a href="{{ route('dosen.show', $dsn->id) }}" class="btn-action btn-action-view" title="Detail Dosen">
                                     <i class="fa-solid fa-eye"></i> Detail
                                 </a>

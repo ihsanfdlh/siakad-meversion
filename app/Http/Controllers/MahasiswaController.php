@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Mahasiswa;
 use App\Models\Prodi;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
     public function index()
     {
-        $mahasiswa = Mahasiswa::with('prodi')
+        $mahasiswa = Mahasiswa::with('prodi', 'kelas')
             ->orderBy('nama')
             ->paginate(25);
 
@@ -19,9 +20,9 @@ class MahasiswaController extends Controller
     }
     public function create()
     {
-        $prodi = Prodi::orderBy('nama')->get();
-
-        return view('mahasiswa.create', compact('prodi'));
+        $prodi = Prodi::get();
+        $kelas = Kelas::get();
+        return view('mahasiswa.create', compact('prodi', 'kelas'));
     }
     public function store(Request $request)
     {

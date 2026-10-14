@@ -22,6 +22,9 @@ public function up(): void
         $table->foreignId('id_prodi')
             ->constrained('prodis')
             ->onDelete('cascade');
+        $table->foreignId('id_kelas')
+            ->constrained('kelas')
+            ->onDelete('cascade');
         $table->timestamps();
     });
 }

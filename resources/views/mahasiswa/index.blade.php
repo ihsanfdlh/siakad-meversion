@@ -36,7 +36,8 @@
                     <th>Nama Mahasiswa</th>
                     <th>Semester</th>
                     <th>Program Studi</th>
-                    <th style="text-align: right; width: 230px;">Aksi</th>
+                    <th>Kelas</th>
+                    <th class="action-cell" style="width: 230px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,9 +47,10 @@
                         <td><span class="code-pill">{{ $mhs->nim }}</span></td>
                         <td><strong>{{ $mhs->nama }}</strong></td>
                         <td><span class="status-pill">Semester {{ $mhs->semester }}</span></td>
-                        <td>{{ $mhs->prodi->nama ?? '-' }}</td>
-                        <td style="text-align: right;">
-                            <div class="action-group" style="justify-content: flex-end;">
+                        <td><span>{{ $mhs->prodi->nama ?? '-' }}</span></td>
+                        <td><span class="status-pill">{{ collect(preg_split('/\s+/', trim($mhs->prodi->nama)))->map(fn($kata) => strtoupper(substr($kata, 0, 1)))->implode('') }}-{{ $mhs->kelas?->semester ?? '-'}}{{ $mhs->kelas?->nama_kelas ?? '-'}}</span></td>
+                        <td class="action-cell">
+                            <div class="action-group">
                                 <a href="{{ route('mahasiswa.show', $mhs->id_mahasiswa) }}" class="btn-action btn-action-view" title="Lihat Biodata">
                                     <i class="fa-solid fa-eye"></i> Detail
                                 </a>

@@ -32,7 +32,7 @@
                     <th>Nama</th>
                     <th>Program Studi</th>
                     <th>Status / Tingkat</th>
-                    <th style="text-align: right; width: 140px;">Aksi</th>
+                    <th class="action-cell" style="width: 140px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,10 +54,12 @@
                                     <span class="status-pill">Mahasiswa Aktif</span>
                             @endswitch
                         </td>
-                        <td style="text-align: right;">
-                            <a href="{{ route('akademik.siswa.show', $item->id) }}" class="btn-action btn-action-view">
-                                <i class="fa-solid fa-eye"></i> Detail
-                            </a>
+                        <td class="action-cell">
+                            <div class="action-group">
+                                <a href="{{ route('akademik.siswa.show', $item->id) }}" class="btn-action btn-action-view">
+                                    <i class="fa-solid fa-eye"></i> Detail
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 @empty
